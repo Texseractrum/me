@@ -1,7 +1,4 @@
-import { promises as fs } from "fs";
-import path from "path";
-
-const DATA_FILE = path.join(process.cwd(), "data", "location.json");
+import { kv } from "@vercel/kv";
 
 export interface LocationData {
   city: string | null;
@@ -10,8 +7,8 @@ export interface LocationData {
 
 export async function getLocation(): Promise<LocationData> {
   try {
-    const data = await fs.readFile(DATA_FILE, "utf-8");
-    return JSON.parse(data);
+    const location = await kv.get<LocationData>("location");
+    return location ?? { city: null };
   } catch {
     return { city: null };
   }

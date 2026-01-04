@@ -1,7 +1,4 @@
-import { promises as fs } from "fs";
-import path from "path";
-
-const DATA_FILE = path.join(process.cwd(), "data", "location.json");
+import { kv } from "@vercel/kv";
 
 interface Location {
   city: string;
@@ -9,31 +6,8 @@ interface Location {
   updatedAt: string;
 }
 
-async function ensureDataDir() {
-  const dir = path.dirname(DATA_FILE);
-  try {
-    await fs.mkdir(dir, { recursive: true });
-  } catch {
-    // Directory exists
-  }
-}
-
-async function readLocation(): Promise<Location | null> {
-  try {
-    const data = await fs.readFile(DATA_FILE, "utf-8");
-    return JSON.parse(data);
-  } catch {
-    return null;
-  }
-}
-
-async function writeLocation(location: Location) {
-  await ensureDataDir();
-  await fs.writeFile(DATA_FILE, JSON.stringify(location, null, 2));
-}
-
 export async function GET() {
-  const location = await readLocation();
+  const location = await kv.get<Location>("location");
 
   if (!location) {
     return Response.json({ city: null });
@@ -62,7 +36,7 @@ export async function POST(request: Request) {
       updatedAt: new Date().toISOString(),
     };
 
-    await writeLocation(location);
+    await kv.set("location", location);
 
     return Response.json({ success: true, location });
   } catch {
