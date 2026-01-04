@@ -175,8 +175,8 @@ export default async function Home() {
           </div>
 
           <div className="flex items-baseline gap-4">
-            <span className="w-24 shrink-0 font-mono text-sm uppercase tracking-widest text-neutral-400">
-              Location
+            <span className="shrink-0 font-mono text-sm uppercase tracking-widest text-neutral-400">
+              Current location
             </span>
             <span className="font-mono text-base text-neutral-600 dark:text-neutral-400">
               {location.city ?? "—"}
