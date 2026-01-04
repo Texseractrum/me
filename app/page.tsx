@@ -166,7 +166,7 @@ export default async function Home() {
 
         <section className="mb-16 space-y-5">
           <div className="flex items-baseline gap-4">
-            <span className="w-24 shrink-0 font-mono text-sm uppercase tracking-widest text-neutral-400">
+            <span className="w-36 shrink-0 font-mono text-sm uppercase tracking-widest text-neutral-400">
               About
             </span>
             <span className="font-mono text-base text-neutral-600 dark:text-neutral-400">
@@ -175,7 +175,7 @@ export default async function Home() {
           </div>
 
           <div className="flex items-baseline gap-4">
-            <span className="shrink-0 font-mono text-sm uppercase tracking-widest text-neutral-400">
+            <span className="w-36 shrink-0 font-mono text-sm uppercase tracking-widest text-neutral-400">
               Current location
             </span>
             <span className="font-mono text-base text-neutral-600 dark:text-neutral-400">
