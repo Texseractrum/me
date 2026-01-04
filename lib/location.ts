@@ -1,4 +1,4 @@
-import { kv } from "@vercel/kv";
+import { createClient } from "redis";
 
 export interface LocationData {
   city: string | null;
@@ -7,8 +7,13 @@ export interface LocationData {
 
 export async function getLocation(): Promise<LocationData> {
   try {
-    const location = await kv.get<LocationData>("location");
-    return location ?? { city: null };
+    const client = createClient({ url: process.env.REDIS_URL });
+    await client.connect();
+    const data = await client.get("location");
+    await client.disconnect();
+
+    if (!data) return { city: null };
+    return JSON.parse(data);
   } catch {
     return { city: null };
   }

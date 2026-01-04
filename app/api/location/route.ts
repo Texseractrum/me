@@ -1,4 +1,4 @@
-import { kv } from "@vercel/kv";
+import { createClient } from "redis";
 
 interface Location {
   city: string;
@@ -6,14 +6,27 @@ interface Location {
   updatedAt: string;
 }
 
-export async function GET() {
-  const location = await kv.get<Location>("location");
+const getRedis = async () => {
+  const client = createClient({ url: process.env.REDIS_URL });
+  await client.connect();
+  return client;
+};
 
-  if (!location) {
+export async function GET() {
+  const redis = await getRedis();
+  try {
+    const data = await redis.get("location");
+    await redis.disconnect();
+
+    if (!data) {
+      return Response.json({ city: null });
+    }
+
+    return Response.json(JSON.parse(data));
+  } catch {
+    await redis.disconnect();
     return Response.json({ city: null });
   }
-
-  return Response.json(location);
 }
 
 export async function POST(request: Request) {
@@ -23,10 +36,12 @@ export async function POST(request: Request) {
     return Response.json({ error: "Unauthorized" }, { status: 401 });
   }
 
+  const redis = await getRedis();
   try {
     const body = await request.json();
 
     if (!body.city) {
+      await redis.disconnect();
       return Response.json({ error: "City is required" }, { status: 400 });
     }
 
@@ -36,10 +51,12 @@ export async function POST(request: Request) {
       updatedAt: new Date().toISOString(),
     };
 
-    await kv.set("location", location);
+    await redis.set("location", JSON.stringify(location));
+    await redis.disconnect();
 
     return Response.json({ success: true, location });
   } catch {
+    await redis.disconnect();
     return Response.json({ error: "Invalid request" }, { status: 400 });
   }
 }
