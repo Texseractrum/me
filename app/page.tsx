@@ -9,7 +9,7 @@ export default async function Home() {
 
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <div className="relative mx-auto flex min-h-screen max-w-2xl flex-col justify-center px-6 py-24">
+      <div className="relative mx-auto flex min-h-screen max-w-2xl flex-col justify-center px-6 py-24 animate-jump">
         <header className="mb-16">
           <div className="flex items-start justify-between">
             <h1 className="font-mono text-base font-medium tracking-tight">

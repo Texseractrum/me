@@ -160,3 +160,16 @@ body {
 .animate-sparkle {
   animation: sparkle 3s ease-in-out infinite;
 }
+
+@keyframes jump {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-jump {
+  animation: jump 1s ease-in-out infinite;
+}
