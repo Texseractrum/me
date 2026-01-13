@@ -1,6 +1,7 @@
 import { getLocation } from "@/lib/location";
 import { ThemeToggle } from "@/components/theme-toggle";
 import TypingText from "@/components/ui/shadcn-io/typing-text";
+import { JumpingText } from "@/components/jumping-text";
 
 export const dynamic = "force-dynamic";
 
@@ -13,24 +14,24 @@ export default async function Home() {
         <header className="mb-16">
           <div className="flex items-start justify-between">
             <h1 className="font-mono text-base font-medium tracking-tight">
-              Ai Daniil Bekirov
+              <JumpingText text="Ai Daniil Bekirov" />
             </h1>
             <ThemeToggle />
           </div>
           <p className="mt-1 font-mono text-sm text-neutral-400">
-            (yes this is my legal name, but you can call me Dan)
+            <JumpingText text="(yes this is my legal name, but you can call me Dan)" />
           </p>
           <p className="mt-2 font-mono text-base text-neutral-500">
-            CEO @{" "}
+            <JumpingText text="CEO @ " />
             <a
               href="https://sparkles.dev"
               target="_blank"
               rel="noopener noreferrer"
               className="text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
             >
-              Sparkles.dev
+              <JumpingText text="Sparkles.dev" />
             </a>{" "}
-            (YC W26)
+            <JumpingText text="(YC W26)" />
           </p>
         </header>
 
@@ -73,13 +74,13 @@ export default async function Home() {
                   rel="noopener noreferrer"
                   className="w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
                 >
-                  Sparkles
+                  <JumpingText text="Sparkles" />
                 </a>
                 <span className="w-20 font-mono text-sm text-neutral-400">
-                  (YC W26)
+                  <JumpingText text="(YC W26)" />
                 </span>
                 <span className="ml-auto font-mono text-sm text-neutral-400">
-                  CEO
+                  <JumpingText text="CEO" />
                 </span>
               </div>
             </div>
@@ -94,13 +95,13 @@ export default async function Home() {
                   rel="noopener noreferrer"
                   className="w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
                 >
-                  Structured
+                  <JumpingText text="Structured" />
                 </a>
                 <span className="w-20 font-mono text-sm text-neutral-400">
-                  (YC F25)
+                  <JumpingText text="(YC F25)" />
                 </span>
                 <span className="ml-auto font-mono text-sm text-neutral-400">
-                  SWE
+                  <JumpingText text="SWE" />
                 </span>
               </div>
             </div>
@@ -115,11 +116,11 @@ export default async function Home() {
                   rel="noopener noreferrer"
                   className="w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
                 >
-                  Cursor
+                  <JumpingText text="Cursor" />
                 </a>
                 <span className="w-20" />
                 <span className="ml-auto font-mono text-sm text-neutral-400">
-                  Ambassador
+                  <JumpingText text="Ambassador" />
                 </span>
               </div>
             </div>
@@ -134,11 +135,11 @@ export default async function Home() {
                   rel="noopener noreferrer"
                   className="w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
                 >
-                  Iterate
+                  <JumpingText text="Iterate" />
                 </a>
                 <span className="w-20" />
                 <span className="ml-auto font-mono text-sm text-neutral-400">
-                  SWE Intern
+                  <JumpingText text="SWE Intern" />
                 </span>
               </div>
             </div>
@@ -153,11 +154,11 @@ export default async function Home() {
                   rel="noopener noreferrer"
                   className="w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
                 >
-                  UCL
+                  <JumpingText text="UCL" />
                 </a>
                 <span className="w-20" />
                 <span className="ml-auto font-mono text-sm text-neutral-400">
-                  Dropout
+                  <JumpingText text="Dropout" />
                 </span>
               </div>
             </div>
@@ -167,21 +168,24 @@ export default async function Home() {
         <section className="mb-16 space-y-5">
           <div className="flex items-baseline gap-4">
             <span className="w-36 shrink-0 font-mono text-sm uppercase tracking-widest text-neutral-400">
-              About
+              <JumpingText text="About" />
             </span>
             <span className="font-mono text-base text-neutral-600 dark:text-neutral-400">
-              20<span className="mx-2 text-neutral-300">·</span>🇺🇦
+              <JumpingText text="20" />
+              <span className="mx-2 text-neutral-300">·</span>🇺🇦
             </span>
           </div>
 
           <div className="flex items-baseline gap-4">
             <span className="w-36 shrink-0 font-mono text-sm uppercase tracking-widest text-neutral-400">
-              Current location
+              <JumpingText text="Current location" />
             </span>
             <span className="font-mono text-base text-neutral-600 dark:text-neutral-400">
-              {location.city ?? "—"}
+              <JumpingText text={location.city ?? "—"} />
               {location.country && (
-                <span className="text-neutral-400">, {location.country}</span>
+                <span className="text-neutral-400">
+                  <JumpingText text={`, ${location.country}`} />
+                </span>
               )}
             </span>
           </div>
@@ -197,7 +201,7 @@ export default async function Home() {
                 rel="noopener noreferrer"
                 className="text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white"
               >
-                GitHub
+                <JumpingText text="GitHub" />
               </a>
             </li>
             <li>
@@ -207,7 +211,7 @@ export default async function Home() {
                 rel="noopener noreferrer"
                 className="text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white"
               >
-                X
+                <JumpingText text="X" />
               </a>
             </li>
             <li>
@@ -217,7 +221,7 @@ export default async function Home() {
                 rel="noopener noreferrer"
                 className="text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white"
               >
-                LinkedIn
+                <JumpingText text="LinkedIn" />
               </a>
             </li>
             <li>
@@ -225,7 +229,7 @@ export default async function Home() {
                 href="mailto:dan@sparkles.dev"
                 className="text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white"
               >
-                Email
+                <JumpingText text="Email" />
               </a>
             </li>
             <li>
@@ -235,7 +239,7 @@ export default async function Home() {
                 rel="noopener noreferrer"
                 className="text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white"
               >
-                Substack
+                <JumpingText text="Substack" />
               </a>
             </li>
           </ul>
