@@ -8,7 +8,7 @@ export default async function Home() {
   const location = await getLocation();
 
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen bg-background text-foreground shimmer-bg">
       <div className="relative mx-auto flex min-h-screen max-w-2xl flex-col justify-center px-6 py-24">
         <header className="mb-16">
           <div className="flex items-start justify-between">
@@ -26,7 +26,7 @@ export default async function Home() {
               href="https://sparkles.dev"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
+              className="sparkle-text text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
             >
               Sparkles.dev
             </a>{" "}
@@ -62,7 +62,7 @@ export default async function Home() {
 
             {/* Sparkles */}
             <div className="relative flex items-center gap-4 pb-5">
-              <div className="relative z-10">
+              <div className="relative z-10 sparkle-dot">
                 <div className="absolute inset-0 h-2 w-2 animate-ping rounded-full bg-black opacity-75 dark:bg-white" />
                 <div className="relative h-2 w-2 rounded-full bg-black dark:bg-white" />
               </div>
@@ -71,7 +71,7 @@ export default async function Home() {
                   href="https://sparkles.dev"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
+                  className="sparkle-text w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
                 >
                   Sparkles
                 </a>
@@ -92,7 +92,7 @@ export default async function Home() {
                   href="https://getstructured.ai"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
+                  className="sparkle-text w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
                 >
                   Structured
                 </a>
@@ -113,7 +113,7 @@ export default async function Home() {
                   href="https://cursor.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
+                  className="sparkle-text w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
                 >
                   Cursor
                 </a>
@@ -132,7 +132,7 @@ export default async function Home() {
                   href="https://iterate.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
+                  className="sparkle-text w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
                 >
                   Iterate
                 </a>
@@ -151,7 +151,7 @@ export default async function Home() {
                   href="https://ucl.ac.uk"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
+                  className="sparkle-text w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
                 >
                   UCL
                 </a>
@@ -195,7 +195,7 @@ export default async function Home() {
                 href="https://github.com/Texseractrum"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white"
+                className="sparkle-text text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white"
               >
                 GitHub
               </a>
@@ -205,7 +205,7 @@ export default async function Home() {
                 href="https://x.com/aidaniil"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white"
+                className="sparkle-text text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white"
               >
                 X
               </a>
@@ -215,7 +215,7 @@ export default async function Home() {
                 href="https://www.linkedin.com/in/aidaniilbekirov/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white"
+                className="sparkle-text text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white"
               >
                 LinkedIn
               </a>
@@ -223,7 +223,7 @@ export default async function Home() {
             <li>
               <a
                 href="mailto:dan@sparkles.dev"
-                className="text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white"
+                className="sparkle-text text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white"
               >
                 Email
               </a>
@@ -233,7 +233,7 @@ export default async function Home() {
                 href="https://substack.aidaniil.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white"
+                className="sparkle-text text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white"
               >
                 Substack
               </a>
