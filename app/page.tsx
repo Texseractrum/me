@@ -26,9 +26,15 @@ export default async function Home() {
               href="https://sparkles.dev"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
+              className="group relative inline-flex items-center gap-1 text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
             >
-              Sparkles.dev
+              <span className="relative inline-block">
+                Sparkles.dev
+                <span className="sparkle sparkle-1 absolute -left-1 -top-2 text-xs">✨</span>
+                <span className="sparkle sparkle-2 absolute -right-2 -top-1 text-xs">✨</span>
+                <span className="sparkle sparkle-3 absolute -left-2 top-3 text-xs">✨</span>
+                <span className="sparkle sparkle-4 absolute right-0 top-4 text-xs">✨</span>
+              </span>
             </a>{" "}
             (YC W26)
           </p>
@@ -71,9 +77,15 @@ export default async function Home() {
                   href="https://sparkles.dev"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
+                  className="group relative w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
                 >
-                  Sparkles
+                  <span className="relative inline-block">
+                    Sparkles
+                    <span className="sparkle sparkle-1 absolute -left-1 -top-2 text-xs">✨</span>
+                    <span className="sparkle sparkle-2 absolute -right-2 -top-1 text-xs">✨</span>
+                    <span className="sparkle sparkle-3 absolute -left-2 top-3 text-xs">✨</span>
+                    <span className="sparkle sparkle-4 absolute right-0 top-4 text-xs">✨</span>
+                  </span>
                 </a>
                 <span className="w-20 font-mono text-sm text-neutral-400">
                   (YC W26)
