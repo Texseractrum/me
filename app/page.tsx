@@ -195,7 +195,7 @@ export default async function Home() {
                 href="https://github.com/Texseractrum"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white"
+                className="text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white animate-bounce"
               >
                 GitHub
               </a>
@@ -205,7 +205,7 @@ export default async function Home() {
                 href="https://x.com/aidaniil"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white"
+                className="text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white animate-bounce"
               >
                 X
               </a>
@@ -215,7 +215,7 @@ export default async function Home() {
                 href="https://www.linkedin.com/in/aidaniilbekirov/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white"
+                className="text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white animate-bounce"
               >
                 LinkedIn
               </a>
@@ -223,7 +223,7 @@ export default async function Home() {
             <li>
               <a
                 href="mailto:dan@sparkles.dev"
-                className="text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white"
+                className="text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white animate-bounce"
               >
                 Email
               </a>
@@ -233,7 +233,7 @@ export default async function Home() {
                 href="https://substack.aidaniil.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white"
+                className="text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white animate-bounce"
               >
                 Substack
               </a>
