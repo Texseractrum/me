@@ -145,3 +145,26 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 1;
+    text-shadow: 0 0 0px currentColor;
+  }
+  25% {
+    opacity: 0.85;
+    text-shadow: 0 0 8px currentColor, 0 0 12px currentColor;
+  }
+  50% {
+    opacity: 1;
+    text-shadow: 0 0 4px currentColor;
+  }
+  75% {
+    opacity: 0.9;
+    text-shadow: 0 0 10px currentColor, 0 0 16px currentColor;
+  }
+}
+
+.animate-sparkle {
+  animation: sparkle 3s ease-in-out infinite;
+}
