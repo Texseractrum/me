@@ -1,6 +1,7 @@
 import { getLocation } from "@/lib/location";
 import { ThemeToggle } from "@/components/theme-toggle";
 import TypingText from "@/components/ui/shadcn-io/typing-text";
+import { Sparkles } from "@/components/sparkles";
 
 export const dynamic = "force-dynamic";
 
@@ -22,14 +23,16 @@ export default async function Home() {
           </p>
           <p className="mt-2 font-mono text-base text-neutral-500">
             CEO @{" "}
-            <a
-              href="https://sparkles.dev"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
-            >
-              Sparkles.dev
-            </a>{" "}
+            <Sparkles>
+              <a
+                href="https://sparkles.dev"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
+              >
+                Sparkles.dev
+              </a>
+            </Sparkles>{" "}
             (YC W26)
           </p>
         </header>
@@ -63,18 +66,20 @@ export default async function Home() {
             {/* Sparkles */}
             <div className="relative flex items-center gap-4 pb-5">
               <div className="relative z-10">
-                <div className="absolute inset-0 h-2 w-2 animate-ping rounded-full bg-black opacity-75 dark:bg-white" />
-                <div className="relative h-2 w-2 rounded-full bg-black dark:bg-white" />
+                <div className="absolute inset-0 h-2 w-2 animate-ping rounded-full bg-yellow-400 opacity-75 dark:bg-yellow-300" />
+                <div className="relative h-2 w-2 rounded-full bg-yellow-400 shadow-lg shadow-yellow-400/50 dark:bg-yellow-300 dark:shadow-yellow-300/50" />
               </div>
               <div className="flex flex-1 items-baseline">
-                <a
-                  href="https://sparkles.dev"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
-                >
-                  Sparkles
-                </a>
+                <Sparkles>
+                  <a
+                    href="https://sparkles.dev"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
+                  >
+                    Sparkles
+                  </a>
+                </Sparkles>
                 <span className="w-20 font-mono text-sm text-neutral-400">
                   (YC W26)
                 </span>

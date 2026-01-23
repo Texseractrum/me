@@ -145,3 +145,22 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes sparkle {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) rotate(0deg) scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(var(--sparkle-x), var(--sparkle-y)) rotate(180deg) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc(var(--sparkle-x) * 2), calc(var(--sparkle-y) * 2)) rotate(360deg) scale(0);
+  }
+}
+
+.animate-sparkle {
+  animation: sparkle 1s ease-in-out forwards;
+}
