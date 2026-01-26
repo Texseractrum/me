@@ -35,7 +35,7 @@ export default async function Home() {
         </header>
 
         <section className="mb-16">
-          <p className="font-mono text-base leading-relaxed text-neutral-600 whitespace-nowrap dark:text-neutral-400">
+          <p className="font-mono text-base leading-relaxed text-neutral-600 dark:text-neutral-400">
             <TypingText
               text="Building software with care. "
               as="span"
