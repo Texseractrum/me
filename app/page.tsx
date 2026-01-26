@@ -1,6 +1,7 @@
 import { getLocation } from "@/lib/location";
 import { ThemeToggle } from "@/components/theme-toggle";
 import TypingText from "@/components/ui/shadcn-io/typing-text";
+import { Sparkles } from "@/components/sparkles";
 
 export const dynamic = "force-dynamic";
 
@@ -13,7 +14,7 @@ export default async function Home() {
         <header className="mb-16">
           <div className="flex items-start justify-between">
             <h1 className="font-mono text-base font-medium tracking-tight">
-              Ai Daniil Bekirov
+              <Sparkles>Ai Daniil Bekirov</Sparkles>
             </h1>
             <ThemeToggle />
           </div>
@@ -28,7 +29,7 @@ export default async function Home() {
               rel="noopener noreferrer"
               className="text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
             >
-              Sparkles.dev
+              <Sparkles>Sparkles.dev</Sparkles>
             </a>{" "}
             (YC W26)
           </p>
@@ -63,8 +64,8 @@ export default async function Home() {
             {/* Sparkles */}
             <div className="relative flex items-center gap-4 pb-5">
               <div className="relative z-10">
-                <div className="absolute inset-0 h-2 w-2 animate-ping rounded-full bg-black opacity-75 dark:bg-white" />
-                <div className="relative h-2 w-2 rounded-full bg-black dark:bg-white" />
+                <div className="absolute inset-0 h-2 w-2 animate-ping rounded-full bg-yellow-500 opacity-75 dark:bg-yellow-400" />
+                <div className="relative h-2 w-2 rounded-full bg-yellow-500 dark:bg-yellow-400" />
               </div>
               <div className="flex flex-1 items-baseline">
                 <a
@@ -73,7 +74,7 @@ export default async function Home() {
                   rel="noopener noreferrer"
                   className="w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
                 >
-                  Sparkles
+                  <Sparkles>Sparkles</Sparkles>
                 </a>
                 <span className="w-20 font-mono text-sm text-neutral-400">
                   (YC W26)
