@@ -145,3 +145,112 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes sparkle-float {
+  0%, 100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(var(--angle)) translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(var(--angle)) translateY(calc(var(--distance) * -1));
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes sparkle-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.sparkle-text {
+  position: relative;
+  display: inline-block;
+}
+
+.sparkle-text::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    oklch(0.8 0.15 250),
+    oklch(0.85 0.2 280),
+    oklch(0.8 0.15 250),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite;
+  opacity: 0;
+  pointer-events: none;
+  border-radius: 4px;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+}
+
+.sparkle-text:hover::after {
+  opacity: 0.6;
+}
+
+.shimmer-bg {
+  background: linear-gradient(
+    110deg,
+    transparent 0%,
+    transparent 40%,
+    oklch(1 0 0 / 3%) 50%,
+    transparent 60%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 8s infinite;
+}
+
+.dark .shimmer-bg {
+  background: linear-gradient(
+    110deg,
+    transparent 0%,
+    transparent 40%,
+    oklch(1 0 0 / 5%) 50%,
+    transparent 60%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+}
+
+.sparkle-dot {
+  position: relative;
+}
+
+.sparkle-dot::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: radial-gradient(circle, oklch(0.8 0.15 280) 0%, transparent 70%);
+  animation: twinkle 2s ease-in-out infinite;
+  pointer-events: none;
+}
