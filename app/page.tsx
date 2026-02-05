@@ -26,7 +26,7 @@ export default async function Home() {
               href="https://sparkles.dev"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
+              className="text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white jump-hover inline-block"
             >
               Sparkles.dev
             </a>{" "}
@@ -71,7 +71,7 @@ export default async function Home() {
                   href="https://sparkles.dev"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
+                  className="w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white jump-hover inline-block"
                 >
                   Sparkles
                 </a>
@@ -92,7 +92,7 @@ export default async function Home() {
                   href="https://getstructured.ai"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
+                  className="w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white jump-hover inline-block"
                 >
                   Structured
                 </a>
@@ -113,7 +113,7 @@ export default async function Home() {
                   href="https://cursor.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
+                  className="w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white jump-hover inline-block"
                 >
                   Cursor
                 </a>
@@ -132,7 +132,7 @@ export default async function Home() {
                   href="https://iterate.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
+                  className="w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white jump-hover inline-block"
                 >
                   Iterate
                 </a>
@@ -151,7 +151,7 @@ export default async function Home() {
                   href="https://ucl.ac.uk"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
+                  className="w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white jump-hover inline-block"
                 >
                   UCL
                 </a>
@@ -195,7 +195,7 @@ export default async function Home() {
                 href="https://github.com/Texseractrum"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white"
+                className="text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white jump-hover inline-block"
               >
                 GitHub
               </a>
@@ -205,7 +205,7 @@ export default async function Home() {
                 href="https://x.com/aidaniil"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white"
+                className="text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white jump-hover inline-block"
               >
                 X
               </a>
@@ -215,7 +215,7 @@ export default async function Home() {
                 href="https://www.linkedin.com/in/aidaniilbekirov/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white"
+                className="text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white jump-hover inline-block"
               >
                 LinkedIn
               </a>
@@ -223,7 +223,7 @@ export default async function Home() {
             <li>
               <a
                 href="mailto:dan@sparkles.dev"
-                className="text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white"
+                className="text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white jump-hover inline-block"
               >
                 Email
               </a>
@@ -233,7 +233,7 @@ export default async function Home() {
                 href="https://substack.aidaniil.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white"
+                className="text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white jump-hover inline-block"
               >
                 Substack
               </a>

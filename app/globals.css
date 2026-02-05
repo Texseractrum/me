@@ -145,3 +145,20 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes jump {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.jump-hover {
+  transition: transform 0.3s ease;
+}
+
+.jump-hover:hover {
+  animation: jump 0.5s ease;
+}
