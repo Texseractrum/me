@@ -1,6 +1,7 @@
 import { getLocation } from "@/lib/location";
 import { ThemeToggle } from "@/components/theme-toggle";
 import TypingText from "@/components/ui/shadcn-io/typing-text";
+import { JumpingText } from "@/components/jumping-text";
 
 export const dynamic = "force-dynamic";
 
@@ -13,7 +14,7 @@ export default async function Home() {
         <header className="mb-16">
           <div className="flex items-start justify-between">
             <h1 className="font-mono text-base font-medium tracking-tight">
-              Ai Daniil Bekirov
+              <JumpingText text="Ai Daniil Bekirov" />
             </h1>
             <ThemeToggle />
           </div>
