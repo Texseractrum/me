@@ -1,6 +1,8 @@
 import { getLocation } from "@/lib/location";
 import { ThemeToggle } from "@/components/theme-toggle";
 import TypingText from "@/components/ui/shadcn-io/typing-text";
+import JumpingText from "@/components/ui/jumping-text";
+import Sparkles from "@/components/ui/sparkles";
 
 export const dynamic = "force-dynamic";
 
@@ -13,7 +15,7 @@ export default async function Home() {
         <header className="mb-16">
           <div className="flex items-start justify-between">
             <h1 className="font-mono text-base font-medium tracking-tight">
-              Ai Daniil Bekirov
+              <JumpingText text="Ai Daniil Bekirov" delay={0.3} />
             </h1>
             <ThemeToggle />
           </div>
@@ -26,8 +28,15 @@ export default async function Home() {
               href="https://sparkles.dev"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
+              className="relative inline-block text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
             >
+              <Sparkles
+                count={6}
+                className="w-20"
+                color="currentColor"
+                minSize={3}
+                maxSize={6}
+              />
               Sparkles.dev
             </a>{" "}
             (YC W26)
@@ -42,6 +51,8 @@ export default async function Home() {
               loop={false}
               typingSpeed={40}
               showCursor={false}
+              jumpOnType={true}
+              showSparkles={false}
             />
             <TypingText
               text="Tinkering with Sandboxes and Agents."
@@ -51,6 +62,8 @@ export default async function Home() {
               initialDelay={2000}
               showCursor={true}
               cursorClassName="bg-neutral-600 dark:bg-neutral-400"
+              jumpOnType={true}
+              showSparkles={true}
             />
           </p>
         </section>
@@ -63,6 +76,13 @@ export default async function Home() {
             {/* Sparkles */}
             <div className="relative flex items-center gap-4 pb-5">
               <div className="relative z-10">
+                <Sparkles
+                  count={5}
+                  className="w-6 h-6"
+                  color="currentColor"
+                  minSize={2}
+                  maxSize={4}
+                />
                 <div className="absolute inset-0 h-2 w-2 animate-ping rounded-full bg-black opacity-75 dark:bg-white" />
                 <div className="relative h-2 w-2 rounded-full bg-black dark:bg-white" />
               </div>
@@ -73,7 +93,7 @@ export default async function Home() {
                   rel="noopener noreferrer"
                   className="w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
                 >
-                  Sparkles
+                  <JumpingText text="Sparkles" stagger={0.08} delay={0} duration={0.4} jumpHeight={8} />
                 </a>
                 <span className="w-20 font-mono text-sm text-neutral-400">
                   (YC W26)

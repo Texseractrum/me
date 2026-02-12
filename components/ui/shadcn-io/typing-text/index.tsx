@@ -2,6 +2,7 @@
 
 import { ElementType, useEffect, useRef, useState, createElement, useMemo, useCallback } from 'react';
 import { gsap } from 'gsap';
+import Sparkles from '../../sparkles';
 
 interface TypingTextProps {
   className?: string;
@@ -22,6 +23,8 @@ interface TypingTextProps {
   onSentenceComplete?: (sentence: string, index: number) => void;
   startOnVisible?: boolean;
   reverseMode?: boolean;
+  jumpOnType?: boolean;
+  showSparkles?: boolean;
 }
 
 const TypingText = ({
@@ -43,6 +46,8 @@ const TypingText = ({
   onSentenceComplete,
   startOnVisible = false,
   reverseMode = false,
+  jumpOnType = true,
+  showSparkles = false,
   ...props
 }: TypingTextProps & React.HTMLAttributes<HTMLElement>) => {
   const [displayedText, setDisplayedText] = useState('');
@@ -52,6 +57,7 @@ const TypingText = ({
   const [isVisible, setIsVisible] = useState(!startOnVisible);
   const cursorRef = useRef<HTMLSpanElement>(null);
   const containerRef = useRef<HTMLElement>(null);
+  const textRef = useRef<HTMLSpanElement>(null);
 
   const textArray = useMemo(() => (Array.isArray(text) ? text : [text]), [text]);
 
@@ -131,6 +137,25 @@ const TypingText = ({
             () => {
               setDisplayedText(prev => prev + processedText[currentCharIndex]);
               setCurrentCharIndex(prev => prev + 1);
+
+              // Add jump animation to the newly added character
+              if (jumpOnType && textRef.current) {
+                const chars = textRef.current.querySelectorAll('.typed-char');
+                const lastChar = chars[chars.length - 1];
+                if (lastChar) {
+                  gsap.fromTo(
+                    lastChar,
+                    { y: 0 },
+                    {
+                      y: -8,
+                      duration: 0.3,
+                      ease: 'power2.out',
+                      yoyo: true,
+                      repeat: 1,
+                    }
+                  );
+                }
+              }
             },
             variableSpeed ? getRandomSpeed() : typingSpeed
           );
@@ -164,7 +189,8 @@ const TypingText = ({
     reverseMode,
     variableSpeed,
     onSentenceComplete,
-    getRandomSpeed
+    getRandomSpeed,
+    jumpOnType
   ]);
 
   const shouldHideCursor =
@@ -177,15 +203,30 @@ const TypingText = ({
       className: `inline-block whitespace-pre-wrap tracking-tight ${className}`,
       ...props
     },
-    <span className="inline" style={{ color: getCurrentTextColor() }}>
-      {displayedText}
+    <span className="inline relative" style={{ color: getCurrentTextColor() }}>
+      {showSparkles && (
+        <Sparkles
+          count={4}
+          className="w-full h-full absolute inset-0"
+          color="currentColor"
+          minSize={2}
+          maxSize={4}
+        />
+      )}
+      <span ref={textRef}>
+        {displayedText.split('').map((char, index) => (
+          <span key={index} className="typed-char inline-block" style={{ display: char === ' ' ? 'inline' : 'inline-block' }}>
+            {char === ' ' ? '\u00A0' : char}
+          </span>
+        ))}
+      </span>
     </span>,
     showCursor && (
       <span
         ref={cursorRef}
         className={`inline-block opacity-100 ${shouldHideCursor ? 'hidden' : ''} ${
-          cursorCharacter === '|' 
-            ? `h-5 w-[1px] translate-y-1 bg-foreground ${cursorClassName}` 
+          cursorCharacter === '|'
+            ? `h-5 w-[1px] translate-y-1 bg-foreground ${cursorClassName}`
             : `ml-1 ${cursorClassName}`
         }`}
       >
