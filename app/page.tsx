@@ -1,6 +1,7 @@
 import { getLocation } from "@/lib/location";
 import { ThemeToggle } from "@/components/theme-toggle";
 import TypingText from "@/components/ui/shadcn-io/typing-text";
+import { Sparkles } from "@/components/sparkles";
 
 export const dynamic = "force-dynamic";
 
@@ -22,14 +23,16 @@ export default async function Home() {
           </p>
           <p className="mt-2 font-mono text-base text-neutral-500">
             CEO @{" "}
-            <a
-              href="https://sparkles.dev"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
-            >
-              Sparkles.dev
-            </a>{" "}
+            <Sparkles>
+              <a
+                href="https://sparkles.dev"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
+              >
+                Sparkles.dev
+              </a>
+            </Sparkles>{" "}
             (YC W26)
           </p>
         </header>
@@ -67,14 +70,16 @@ export default async function Home() {
                 <div className="relative h-2 w-2 rounded-full bg-black dark:bg-white" />
               </div>
               <div className="flex flex-1 items-baseline">
-                <a
-                  href="https://sparkles.dev"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
-                >
-                  Sparkles
-                </a>
+                <Sparkles>
+                  <a
+                    href="https://sparkles.dev"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
+                  >
+                    Sparkles
+                  </a>
+                </Sparkles>
                 <span className="w-20 font-mono text-sm text-neutral-400">
                   (YC W26)
                 </span>

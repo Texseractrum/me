@@ -145,3 +145,14 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes sparkle-fade {
+  0%, 100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1) rotate(180deg);
+  }
+}
