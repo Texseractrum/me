@@ -1,6 +1,8 @@
 import { getLocation } from "@/lib/location";
 import { ThemeToggle } from "@/components/theme-toggle";
 import TypingText from "@/components/ui/shadcn-io/typing-text";
+import { Sparkles } from "@/components/sparkles";
+import { SparklesLink } from "@/components/sparkles-link";
 
 export const dynamic = "force-dynamic";
 
@@ -22,14 +24,14 @@ export default async function Home() {
           </p>
           <p className="mt-2 font-mono text-base text-neutral-500">
             CEO @{" "}
-            <a
+            <SparklesLink
               href="https://sparkles.dev"
               target="_blank"
               rel="noopener noreferrer"
               className="text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
             >
               Sparkles.dev
-            </a>{" "}
+            </SparklesLink>{" "}
             (YC W26)
           </p>
         </header>
@@ -65,6 +67,9 @@ export default async function Home() {
               <div className="relative z-10">
                 <div className="absolute inset-0 h-2 w-2 animate-ping rounded-full bg-black opacity-75 dark:bg-white" />
                 <div className="relative h-2 w-2 rounded-full bg-black dark:bg-white" />
+                <div className="absolute -inset-8 pointer-events-none">
+                  <Sparkles density={4} speed={0.8} size={2} />
+                </div>
               </div>
               <div className="flex flex-1 items-baseline">
                 <a
