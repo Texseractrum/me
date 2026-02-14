@@ -71,9 +71,14 @@ export default async function Home() {
                   href="https://sparkles.dev"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
+                  className="relative w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
                 >
-                  Sparkles
+                  <span className="relative inline-block">
+                    Sparkles
+                    <span className="pointer-events-none absolute -left-1 -top-1 text-xs opacity-0 animate-sparkle-1">✨</span>
+                    <span className="pointer-events-none absolute -right-1 -top-1 text-xs opacity-0 animate-sparkle-2">✨</span>
+                    <span className="pointer-events-none absolute -bottom-1 left-1/2 text-xs opacity-0 animate-sparkle-3">✨</span>
+                  </span>
                 </a>
                 <span className="w-20 font-mono text-sm text-neutral-400">
                   (YC W26)
