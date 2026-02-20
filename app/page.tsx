@@ -17,16 +17,16 @@ export default async function Home() {
             </h1>
             <ThemeToggle />
           </div>
-          <p className="mt-1 font-mono text-sm text-purple-400">
+          <p className="mt-1 font-mono text-sm text-neutral-400">
             (yes this is my legal name, but you can call me Dan)
           </p>
-          <p className="mt-2 font-mono text-base text-purple-500">
+          <p className="mt-2 font-mono text-base text-neutral-500">
             CEO @{" "}
             <a
               href="https://sparkles.dev"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-purple-600 underline decoration-purple-300 underline-offset-2 transition-colors hover:text-purple-900 hover:decoration-purple-900 dark:text-purple-400 dark:decoration-purple-600 dark:hover:text-purple-200 dark:hover:decoration-purple-200"
+              className="text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
             >
               Sparkles.dev
             </a>{" "}
@@ -35,7 +35,7 @@ export default async function Home() {
         </header>
 
         <section className="mb-16">
-          <p className="font-mono text-base leading-relaxed text-purple-600 dark:text-purple-400">
+          <p className="font-mono text-base leading-relaxed text-neutral-600 dark:text-neutral-400">
             <TypingText
               text="Building software with care. "
               as="span"
@@ -50,7 +50,7 @@ export default async function Home() {
               typingSpeed={40}
               initialDelay={2000}
               showCursor={true}
-              cursorClassName="bg-purple-600 dark:bg-purple-400"
+              cursorClassName="bg-neutral-600 dark:bg-neutral-400"
             />
           </p>
         </section>
@@ -58,27 +58,27 @@ export default async function Home() {
         <section className="mb-16">
           <div className="relative space-y-0">
             {/* Timeline line */}
-            <div className="absolute left-1 top-2 h-[calc(100%-16px)] w-px bg-purple-200 dark:bg-purple-800" />
+            <div className="absolute left-1 top-2 h-[calc(100%-16px)] w-px bg-neutral-200 dark:bg-neutral-700" />
 
             {/* Sparkles */}
             <div className="relative flex items-center gap-4 pb-5">
               <div className="relative z-10">
-                <div className="absolute inset-0 h-2 w-2 animate-ping rounded-full bg-purple-600 opacity-75 dark:bg-purple-400" />
-                <div className="relative h-2 w-2 rounded-full bg-purple-600 dark:bg-purple-400" />
+                <div className="absolute inset-0 h-2 w-2 animate-ping rounded-full bg-black opacity-75 dark:bg-white" />
+                <div className="relative h-2 w-2 rounded-full bg-black dark:bg-white" />
               </div>
               <div className="flex flex-1 items-baseline">
                 <a
                   href="https://sparkles.dev"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-28 font-mono text-base text-purple-600 underline decoration-purple-300 underline-offset-2 transition-colors hover:text-purple-900 hover:decoration-purple-900 dark:text-purple-400 dark:decoration-purple-600 dark:hover:text-purple-200 dark:hover:decoration-purple-200"
+                  className="w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
                 >
                   Sparkles
                 </a>
-                <span className="w-20 font-mono text-sm text-purple-400">
+                <span className="w-20 font-mono text-sm text-neutral-400">
                   (YC W26)
                 </span>
-                <span className="ml-auto font-mono text-sm text-purple-400">
+                <span className="ml-auto font-mono text-sm text-neutral-400">
                   CEO
                 </span>
               </div>
@@ -86,20 +86,20 @@ export default async function Home() {
 
             {/* Structured */}
             <div className="relative flex items-center gap-4 pb-5">
-              <div className="relative z-10 h-2 w-2 rounded-full bg-purple-300 dark:bg-purple-700" />
+              <div className="relative z-10 h-2 w-2 rounded-full bg-neutral-300 dark:bg-neutral-600" />
               <div className="flex flex-1 items-baseline">
                 <a
                   href="https://getstructured.ai"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-28 font-mono text-base text-purple-600 underline decoration-purple-300 underline-offset-2 transition-colors hover:text-purple-900 hover:decoration-purple-900 dark:text-purple-400 dark:decoration-purple-600 dark:hover:text-purple-200 dark:hover:decoration-purple-200"
+                  className="w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
                 >
                   Structured
                 </a>
-                <span className="w-20 font-mono text-sm text-purple-400">
+                <span className="w-20 font-mono text-sm text-neutral-400">
                   (YC F25)
                 </span>
-                <span className="ml-auto font-mono text-sm text-purple-400">
+                <span className="ml-auto font-mono text-sm text-neutral-400">
                   SWE
                 </span>
               </div>
@@ -107,18 +107,18 @@ export default async function Home() {
 
             {/* Cursor */}
             <div className="relative flex items-center gap-4 pb-5">
-              <div className="relative z-10 h-2 w-2 rounded-full bg-purple-300 dark:bg-purple-700" />
+              <div className="relative z-10 h-2 w-2 rounded-full bg-neutral-300 dark:bg-neutral-600" />
               <div className="flex flex-1 items-baseline">
                 <a
                   href="https://cursor.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-28 font-mono text-base text-purple-600 underline decoration-purple-300 underline-offset-2 transition-colors hover:text-purple-900 hover:decoration-purple-900 dark:text-purple-400 dark:decoration-purple-600 dark:hover:text-purple-200 dark:hover:decoration-purple-200"
+                  className="w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
                 >
                   Cursor
                 </a>
                 <span className="w-20" />
-                <span className="ml-auto font-mono text-sm text-purple-400">
+                <span className="ml-auto font-mono text-sm text-neutral-400">
                   Ambassador
                 </span>
               </div>
@@ -126,18 +126,18 @@ export default async function Home() {
 
             {/* Iterate */}
             <div className="relative flex items-center gap-4 pb-5">
-              <div className="relative z-10 h-2 w-2 rounded-full bg-purple-300 dark:bg-purple-700" />
+              <div className="relative z-10 h-2 w-2 rounded-full bg-neutral-300 dark:bg-neutral-600" />
               <div className="flex flex-1 items-baseline">
                 <a
                   href="https://iterate.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-28 font-mono text-base text-purple-600 underline decoration-purple-300 underline-offset-2 transition-colors hover:text-purple-900 hover:decoration-purple-900 dark:text-purple-400 dark:decoration-purple-600 dark:hover:text-purple-200 dark:hover:decoration-purple-200"
+                  className="w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
                 >
                   Iterate
                 </a>
                 <span className="w-20" />
-                <span className="ml-auto font-mono text-sm text-purple-400">
+                <span className="ml-auto font-mono text-sm text-neutral-400">
                   SWE Intern
                 </span>
               </div>
@@ -145,18 +145,18 @@ export default async function Home() {
 
             {/* UCL */}
             <div className="relative flex items-center gap-4">
-              <div className="relative z-10 h-2 w-2 rounded-full bg-purple-300 dark:bg-purple-700" />
+              <div className="relative z-10 h-2 w-2 rounded-full bg-neutral-300 dark:bg-neutral-600" />
               <div className="flex flex-1 items-baseline">
                 <a
                   href="https://ucl.ac.uk"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-28 font-mono text-base text-purple-600 underline decoration-purple-300 underline-offset-2 transition-colors hover:text-purple-900 hover:decoration-purple-900 dark:text-purple-400 dark:decoration-purple-600 dark:hover:text-purple-200 dark:hover:decoration-purple-200"
+                  className="w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
                 >
                   UCL
                 </a>
                 <span className="w-20" />
-                <span className="ml-auto font-mono text-sm text-purple-400">
+                <span className="ml-auto font-mono text-sm text-neutral-400">
                   Dropout
                 </span>
               </div>
@@ -166,22 +166,22 @@ export default async function Home() {
 
         <section className="mb-16 space-y-5">
           <div className="flex items-baseline gap-4">
-            <span className="w-36 shrink-0 font-mono text-sm uppercase tracking-widest text-purple-400">
+            <span className="w-36 shrink-0 font-mono text-sm uppercase tracking-widest text-neutral-400">
               About
             </span>
-            <span className="font-mono text-base text-purple-600 dark:text-purple-400">
-              20<span className="mx-2 text-purple-300">·</span>🇺🇦
+            <span className="font-mono text-base text-neutral-600 dark:text-neutral-400">
+              20<span className="mx-2 text-neutral-300">·</span>🇺🇦
             </span>
           </div>
 
           <div className="flex items-baseline gap-4">
-            <span className="w-36 shrink-0 font-mono text-sm uppercase tracking-widest text-purple-400">
+            <span className="w-36 shrink-0 font-mono text-sm uppercase tracking-widest text-neutral-400">
               Current location
             </span>
-            <span className="font-mono text-base text-purple-600 dark:text-purple-400">
+            <span className="font-mono text-base text-neutral-600 dark:text-neutral-400">
               {location.city ?? "—"}
               {location.country && (
-                <span className="text-purple-400">, {location.country}</span>
+                <span className="text-neutral-400">, {location.country}</span>
               )}
             </span>
           </div>
@@ -195,7 +195,7 @@ export default async function Home() {
                 href="https://github.com/Texseractrum"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-purple-400 transition-colors duration-200 hover:text-purple-900 dark:hover:text-purple-200"
+                className="text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white"
               >
                 GitHub
               </a>
@@ -205,7 +205,7 @@ export default async function Home() {
                 href="https://x.com/aidaniil"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-purple-400 transition-colors duration-200 hover:text-purple-900 dark:hover:text-purple-200"
+                className="text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white"
               >
                 X
               </a>
@@ -215,7 +215,7 @@ export default async function Home() {
                 href="https://www.linkedin.com/in/aidaniilbekirov/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-purple-400 transition-colors duration-200 hover:text-purple-900 dark:hover:text-purple-200"
+                className="text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white"
               >
                 LinkedIn
               </a>
@@ -223,7 +223,7 @@ export default async function Home() {
             <li>
               <a
                 href="mailto:dan@sparkles.dev"
-                className="text-purple-400 transition-colors duration-200 hover:text-purple-900 dark:hover:text-purple-200"
+                className="text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white"
               >
                 Email
               </a>
@@ -233,7 +233,7 @@ export default async function Home() {
                 href="https://substack.aidaniil.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-purple-400 transition-colors duration-200 hover:text-purple-900 dark:hover:text-purple-200"
+                className="text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white"
               >
                 Substack
               </a>
