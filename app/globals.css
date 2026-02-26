@@ -62,10 +62,12 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: oklch(0.5 0.2 300);
 }
 
 body {
   font-family: var(--font-geist-mono), ui-monospace, monospace;
+  background-color: oklch(0.5 0.2 300);
 }
 
 :root {
