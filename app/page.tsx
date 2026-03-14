@@ -188,33 +188,14 @@ export default async function Home() {
 
         </section>
 
-        <section className="mb-16">
-          <p className="mb-4 font-mono text-sm uppercase tracking-widest text-neutral-400">
-            Angel
-          </p>
-          <div className="relative space-y-0">
-            {/* Timeline line */}
-            <div className="absolute left-1 top-2 h-[calc(100%-16px)] w-px bg-neutral-200 dark:bg-neutral-700" />
-
-            {/* Fed10 */}
-            <div className="relative flex items-center gap-4 pb-5">
-              <div className="relative z-10 h-2 w-2 rounded-full bg-neutral-300 dark:bg-neutral-600" />
-              <div className="flex flex-1 items-baseline">
-                <span className="w-28 font-mono text-base text-neutral-600 dark:text-neutral-400">
-                  Fed10
-                </span>
-              </div>
-            </div>
-
-            {/* Byteport */}
-            <div className="relative flex items-center gap-4">
-              <div className="relative z-10 h-2 w-2 rounded-full bg-neutral-300 dark:bg-neutral-600" />
-              <div className="flex flex-1 items-baseline">
-                <span className="w-28 font-mono text-base text-neutral-600 dark:text-neutral-400">
-                  Byteport
-                </span>
-              </div>
-            </div>
+        <section className="mb-16 space-y-5">
+          <div className="flex items-baseline gap-4">
+            <span className="w-36 shrink-0 font-mono text-sm uppercase tracking-widest text-neutral-400">
+              Angel
+            </span>
+            <span className="font-mono text-base text-neutral-600 dark:text-neutral-400">
+              Fed10<span className="mx-2 text-neutral-300">·</span>Byteport
+            </span>
           </div>
         </section>
 
