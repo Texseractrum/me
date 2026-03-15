@@ -186,6 +186,15 @@ export default async function Home() {
             </span>
           </div>
 
+          <div className="flex items-baseline gap-4">
+            <span className="w-36 shrink-0 font-mono text-sm uppercase tracking-widest text-neutral-400">
+              Hobbies
+            </span>
+            <span className="font-mono text-base text-neutral-600 dark:text-neutral-400">
+              Coding<span className="mx-2 text-neutral-300">·</span>Climbing<span className="mx-2 text-neutral-300">·</span>Doing cool things
+            </span>
+          </div>
+
         </section>
 
         <nav className="mt-auto">
