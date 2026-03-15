@@ -188,18 +188,8 @@ export default async function Home() {
 
         </section>
 
-        <section className="mb-16 space-y-5">
-          <div className="flex items-baseline gap-4">
-            <span className="w-36 shrink-0 font-mono text-sm uppercase tracking-widest text-neutral-400">
-              Coding
-            </span>
-            <span className="font-mono text-base text-neutral-600 dark:text-neutral-400">
-              Zig<span className="mx-2 text-neutral-300">·</span>Rust<span className="mx-2 text-neutral-300">·</span>TypeScript<span className="mx-2 text-neutral-300">·</span>Java
-            </span>
-          </div>
-        </section>
 
-        <nav className="mt-auto">
+<nav className="mt-auto">
           <ul className="flex gap-6 font-mono text-base">
             <li>
               <a
