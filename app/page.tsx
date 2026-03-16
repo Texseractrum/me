@@ -191,7 +191,7 @@ export default async function Home() {
               Hobbies
             </span>
             <span className="font-mono text-base text-neutral-600 dark:text-neutral-400">
-              Coding<span className="mx-2 text-neutral-300">·</span>Climbing<span className="mx-2 text-neutral-300">·</span>Ice skating<span className="mx-2 text-neutral-300">·</span>Doing cool things
+              Coding<span className="mx-2 text-neutral-300">·</span>Climbing<span className="mx-2 text-neutral-300">·</span>Drinking water<span className="mx-2 text-neutral-300">·</span>Doing cool things
             </span>
           </div>
 
