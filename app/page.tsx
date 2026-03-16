@@ -185,7 +185,8 @@ export default async function Home() {
 
         </section>
 
-        <nav className="mt-auto">
+
+<nav className="mt-auto">
           <ul className="flex gap-6 font-mono text-base">
             <li>
               <a
