@@ -1,6 +1,7 @@
 import { getLocation } from "@/lib/location";
 import { ThemeToggle } from "@/components/theme-toggle";
 import TypingText from "@/components/ui/shadcn-io/typing-text";
+import { SparkleLink } from "@/components/sparkle-link";
 
 export const dynamic = "force-dynamic";
 
@@ -22,14 +23,12 @@ export default async function Home() {
           </p>
           <p className="mt-2 font-mono text-base text-neutral-500">
             CEO @{" "}
-            <a
+            <SparkleLink
               href="https://sparkles.dev"
-              target="_blank"
-              rel="noopener noreferrer"
               className="text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
             >
               Sparkles.dev
-            </a>{" "}
+            </SparkleLink>{" "}
             (YC W26)
           </p>
         </header>
@@ -67,14 +66,12 @@ export default async function Home() {
                 <div className="relative h-2 w-2 rounded-full bg-black dark:bg-white" />
               </div>
               <div className="flex flex-1 items-baseline">
-                <a
+                <SparkleLink
                   href="https://sparkles.dev"
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
                 >
                   Sparkles
-                </a>
+                </SparkleLink>
                 <span className="w-20 font-mono text-sm text-neutral-400">
                   (YC W26)
                 </span>
@@ -183,15 +180,6 @@ export default async function Home() {
               {location.country && (
                 <span className="text-neutral-400">, {location.country}</span>
               )}
-            </span>
-          </div>
-
-          <div className="flex items-baseline gap-4">
-            <span className="w-36 shrink-0 font-mono text-sm uppercase tracking-widest text-neutral-400">
-              Hobbies
-            </span>
-            <span className="font-mono text-base text-neutral-600 dark:text-neutral-400">
-              Coding<span className="mx-2 text-neutral-300">·</span>Climbing<span className="mx-2 text-neutral-300">·</span>Drinking water<span className="mx-2 text-neutral-300">·</span>Doing cool things
             </span>
           </div>
 
