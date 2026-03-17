@@ -161,6 +161,15 @@ export default async function Home() {
           </div>
         </section>
 
+        <section className="mb-16">
+          <h2 className="mb-5 font-mono text-sm uppercase tracking-widest text-neutral-400">
+            Angel Investing
+          </h2>
+          <p className="font-mono text-base text-neutral-600 dark:text-neutral-400">
+            Byteport<span className="mx-2 text-neutral-300">·</span>Fed10<span className="mx-2 text-neutral-300">·</span>Forum
+          </p>
+        </section>
+
         <section className="mb-16 space-y-5">
           <div className="flex items-baseline gap-4">
             <span className="w-36 shrink-0 font-mono text-sm uppercase tracking-widest text-neutral-400">
