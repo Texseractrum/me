@@ -166,7 +166,7 @@ export default async function Home() {
             Angel Investing
           </h2>
           <p className="font-mono text-base text-neutral-600 dark:text-neutral-400">
-            Byteport<span className="mx-2 text-neutral-300">·</span>Fed10<span className="mx-2 text-neutral-300">·</span>Forum
+            Byteport<span className="mx-2 text-neutral-300">·</span>Fed10<span className="mx-2 text-neutral-300">·</span>Forum<span className="mx-2 text-neutral-300">·</span>Shofo
           </p>
         </section>
 
