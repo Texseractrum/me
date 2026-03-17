@@ -81,17 +81,17 @@ export default async function Home() {
               </div>
             </div>
 
-            {/* Structured */}
+            {/* Lovable */}
             <div className="relative flex items-center gap-4 pb-5">
               <div className="relative z-10 h-2 w-2 rounded-full bg-neutral-300 dark:bg-neutral-600" />
               <div className="flex flex-1 items-baseline">
                 <a
-                  href="https://getstructured.ai"
+                  href="https://lovable.dev"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
                 >
-                  Structured
+                  Lovable
                 </a>
                 <span className="w-20 font-mono text-sm text-neutral-400">
                   (YC F25)
