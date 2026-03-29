@@ -13,7 +13,7 @@ export default async function Home() {
       <div className="relative mx-auto flex min-h-screen max-w-2xl flex-col justify-center px-6 py-24">
         <header className="mb-16">
           <div className="flex items-start justify-between">
-            <h1 className="font-mono text-base font-medium tracking-tight">
+            <h1 className="font-mono text-base font-medium tracking-tight text-red-600">
               Ai Daniil Bekirov
             </h1>
             <ThemeToggle />
