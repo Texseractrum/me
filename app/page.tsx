@@ -192,7 +192,7 @@ export default async function Home() {
                 href="https://github.com/Texseractrum"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white"
+                className="text-neutral-400 transition-all duration-300 hover:text-black dark:hover:text-white hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(0,0,0,0.5)] dark:hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] inline-block"
               >
                 GitHub
               </a>
@@ -202,7 +202,7 @@ export default async function Home() {
                 href="https://x.com/aidaniil"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white"
+                className="text-neutral-400 transition-all duration-300 hover:text-black dark:hover:text-white hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(0,0,0,0.5)] dark:hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] inline-block"
               >
                 X
               </a>
@@ -212,7 +212,7 @@ export default async function Home() {
                 href="https://www.linkedin.com/in/aidaniilbekirov/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white"
+                className="text-neutral-400 transition-all duration-300 hover:text-black dark:hover:text-white hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(0,0,0,0.5)] dark:hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] inline-block"
               >
                 LinkedIn
               </a>
@@ -220,7 +220,7 @@ export default async function Home() {
             <li>
               <a
                 href="mailto:dan@sparkles.dev"
-                className="text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white"
+                className="text-neutral-400 transition-all duration-300 hover:text-black dark:hover:text-white hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(0,0,0,0.5)] dark:hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] inline-block"
               >
                 Email
               </a>
@@ -230,7 +230,7 @@ export default async function Home() {
                 href="https://substack.aidaniil.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white"
+                className="text-neutral-400 transition-all duration-300 hover:text-black dark:hover:text-white hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(0,0,0,0.5)] dark:hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] inline-block"
               >
                 Substack
               </a>
