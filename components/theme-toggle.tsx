@@ -19,15 +19,15 @@ export function ThemeToggle() {
     );
   }
 
-  const isDark = resolvedTheme === "dark";
+  const isBlue = resolvedTheme === "blue";
 
   return (
     <button
-      onClick={() => setTheme(isDark ? "light" : "dark")}
+      onClick={() => setTheme(isBlue ? "light" : "blue")}
       className="font-mono text-sm text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white"
       aria-label="Toggle theme"
     >
-      {isDark ? "Light" : "Dark"}
+      {isBlue ? "Light" : "Blue"}
     </button>
   );
 }
