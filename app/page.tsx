@@ -62,8 +62,8 @@ export default async function Home() {
             {/* Sparkles */}
             <div className="relative flex items-center gap-4 pb-5">
               <div className="relative z-10">
-                <div className="absolute inset-0 h-2 w-2 animate-ping rounded-full bg-black opacity-75 dark:bg-white" />
-                <div className="relative h-2 w-2 rounded-full bg-black dark:bg-white" />
+                <div className="absolute inset-0 h-2 w-2 animate-ping rounded-full bg-red-500 opacity-75" />
+                <div className="relative h-2 w-2 rounded-full bg-red-500" />
               </div>
               <div className="flex flex-1 items-baseline">
                 <SparkleLink
