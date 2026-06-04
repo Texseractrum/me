@@ -1,0 +1,26 @@
+# Build-only config for replacing the SSH TUI process group inside me-ssh.
+# Use this separately from fly.web.toml so the web machine is not touched.
+app = "me-ssh"
+primary_region = "sjc"
+
+[build]
+  dockerfile = "Dockerfile.tui"
+
+[processes]
+  app = "node tui/server.mjs"
+
+[env]
+  TUI_HOST = "0.0.0.0"
+  TUI_PORT = "22"
+  WEB_BASE_URL = "https://me-ssh.fly.dev"
+
+[[services]]
+  processes = ["app"]
+  protocol = "tcp"
+  internal_port = 22
+  auto_start_machines = true
+  auto_stop_machines = "stop"
+  min_machines_running = 0
+
+  [[services.ports]]
+    port = 22

@@ -1,0 +1,31 @@
+# Build-only config for the web image that runs inside the existing Fly app.
+# Do not use this to replace all machines in me-ssh; the TUI machine uses a
+# separate existing image and should continue serving public port 22.
+app = "me-ssh"
+primary_region = "sjc"
+
+[build]
+  dockerfile = "Dockerfile.web"
+
+[processes]
+  web = "node server.js"
+
+[env]
+  HOSTNAME = "0.0.0.0"
+  PORT = "3000"
+
+[[services]]
+  processes = ["web"]
+  protocol = "tcp"
+  internal_port = 3000
+  auto_start_machines = true
+  auto_stop_machines = "stop"
+  min_machines_running = 1
+
+  [[services.ports]]
+    port = 80
+    handlers = ["http"]
+
+  [[services.ports]]
+    port = 443
+    handlers = ["http", "tls"]

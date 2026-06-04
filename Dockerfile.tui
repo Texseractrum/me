@@ -1,0 +1,21 @@
+FROM oven/bun:1.3.13-alpine AS deps
+WORKDIR /app
+
+COPY package.json bun.lock ./
+RUN bun install --frozen-lockfile --production
+
+FROM node:24-alpine AS runner
+WORKDIR /app
+
+ENV NODE_ENV=production
+ENV TUI_HOST=0.0.0.0
+ENV TUI_PORT=22
+ENV WEB_BASE_URL=https://me-ssh.fly.dev
+
+COPY --from=deps /app/node_modules ./node_modules
+COPY tui ./tui
+COPY public/animations ./public/animations
+
+EXPOSE 22
+
+CMD ["node", "tui/server.mjs"]
