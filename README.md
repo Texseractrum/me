@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Personal Website
 
-## Getting Started
+A personal website built with Next.js, React, TypeScript, and Tailwind CSS. It includes live Spotify and location endpoints, plus an optional SSH terminal interface.
 
-First, run the development server:
+## Development
+
+Install dependencies and start the web app:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Available Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `npm run dev` starts the Next.js development server.
+- `npm run build` creates a production build.
+- `npm run start` serves the production build.
+- `npm run lint` runs ESLint.
+- `npm run tui` starts the SSH terminal interface on port `2222`.
+- `npm run tui:dev` starts the terminal interface with the development port explicitly set.
 
-## Learn More
+## Environment Variables
 
-To learn more about Next.js, take a look at the following resources:
+The core site runs without additional configuration. Optional integrations use these variables:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET`, and `SPOTIFY_REFRESH_TOKEN` enable Spotify data.
+- `LOCATION_API_KEY` protects location updates.
+- `WEB_BASE_URL` configures the web app URL used by the terminal interface.
+- `TUI_HOST`, `TUI_PORT`, `TUI_HOST_KEY`, and `TUI_HOST_KEY_PATH` configure the SSH server.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Store local values in `.env.local` and do not commit secrets.
