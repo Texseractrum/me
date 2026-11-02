@@ -61,29 +61,37 @@ export function SmokeAscii({
     const range = Math.max(1, white - black);
     const last = RAMP.length - 1;
 
+    const BASE_FONT = 10; // px; the grid is scaled with a transform to cover the container
+    pre.style.fontSize = `${BASE_FONT}px`;
+    pre.style.transformOrigin = "0 0";
+
+    // Measure the real rendered glyph width in the DOM (canvas metrics can differ per browser)
     const measureCharWidth = () => {
-      const c = document.createElement("canvas").getContext("2d");
-      if (!c) return 0.6;
-      c.font = `100px ${FONT_FAMILY}`;
-      return c.measureText("M").width / 100;
+      const probe = document.createElement("span");
+      probe.style.cssText = `position:absolute;visibility:hidden;white-space:pre;font-family:${FONT_FAMILY};font-size:${BASE_FONT}px;`;
+      probe.textContent = "M".repeat(100);
+      wrap.appendChild(probe);
+      const width = probe.getBoundingClientRect().width / 100;
+      probe.remove();
+      return width || BASE_FONT * 0.6;
     };
-    const charWidth = measureCharWidth();
 
     const fit = () => {
-      const lineHeight = charWidth * CELL_ASPECT;
       const width = wrap.clientWidth;
       const height = wrap.clientHeight;
       if (!width || !height) return;
-      // "cover": fill the container in both directions, crop the overflow
-      const fontSize = Math.max(width / (cols * charWidth), height / (rows * lineHeight));
-      const gridWidth = cols * charWidth * fontSize;
-      const gridHeight = rows * lineHeight * fontSize;
-      pre.style.fontSize = `${fontSize}px`;
-      pre.style.lineHeight = `${lineHeight * fontSize}px`;
+      const charWidth = measureCharWidth();
+      const lineHeight = charWidth * CELL_ASPECT;
+      pre.style.lineHeight = `${lineHeight}px`;
+      const gridWidth = cols * charWidth;
+      const gridHeight = rows * lineHeight;
       pre.style.width = `${gridWidth}px`;
       pre.style.height = `${gridHeight}px`;
-      pre.style.left = `${(width - gridWidth) / 2}px`;
-      pre.style.top = `${(height - gridHeight) / 2}px`;
+      // "cover": fill the container in both directions, crop the overflow
+      const scale = Math.max(width / gridWidth, height / gridHeight) * 1.02;
+      const x = (width - gridWidth * scale) / 2;
+      const y = (height - gridHeight * scale) / 2;
+      pre.style.transform = `translate(${x}px, ${y}px) scale(${scale})`;
     };
 
     const draw = () => {
@@ -146,6 +154,7 @@ export function SmokeAscii({
 
     const observer = new ResizeObserver(fit);
     observer.observe(wrap);
+    document.fonts?.ready.then(fit).catch(() => {});
 
     const onVisibility = () => {
       if (document.hidden) video.pause();
@@ -174,7 +183,7 @@ export function SmokeAscii({
     >
       <pre
         ref={preRef}
-        className="absolute m-0 whitespace-pre"
+        className="absolute left-0 top-0 m-0 overflow-hidden whitespace-pre"
         style={{ fontFamily: FONT_FAMILY }}
       />
     </div>
