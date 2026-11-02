@@ -32,8 +32,8 @@ export function SmokeAscii({
   className = "",
   src = "/animations/smoke/smoke60.mp4",
   cols = 160,
-  black = 25,
-  white = 125,
+  black = 32,
+  white = 110,
 }: SmokeAsciiProps) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const preRef = useRef<HTMLPreElement>(null);
