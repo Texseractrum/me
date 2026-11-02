@@ -16,10 +16,10 @@ const MAIN_SCREEN = `${ESC}?1049l`;
 const CLEAR = `${ESC}2J`;
 const HOME = `${ESC}H`;
 
-const FRAME_DIR = path.join(process.cwd(), "public", "animations", "cube", "high");
-const DEFAULT_WEB_BASE_URL = "https://me-ssh.fly.dev";
+const FRAME_DIR = process.env.TUI_FRAME_DIR || path.join(process.cwd(), "public", "animations", "smoke", "tui");
+const DEFAULT_WEB_BASE_URL = "https://www.aidaniil.com";
 const DEFAULT_HOST_KEY_PATH = path.join(process.cwd(), "data", "tui-host-key.pem");
-const DEFAULT_TUI_FPS = 20;
+const DEFAULT_TUI_FPS = 12;
 const TUI_FPS = Math.max(1, Number(process.env.TUI_FPS) || DEFAULT_TUI_FPS);
 const FRAME_INTERVAL_MS = Math.round(1000 / TUI_FPS);
 const DEFAULT_ASCII_SCALE = 0.78;

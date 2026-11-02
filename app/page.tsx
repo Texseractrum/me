@@ -1,7 +1,7 @@
 import { getLocation } from "@/lib/location";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { SparkleLink } from "@/components/sparkle-link";
-import { SpaceAscii } from "@/components/space-ascii";
+import { SmokeAscii } from "@/components/smoke-ascii";
 import { AngelInvestments } from "@/components/angel-investments";
 import { getNowPlaying } from "@/lib/spotify";
 
@@ -42,8 +42,9 @@ export default async function Home() {
   ]);
 
   return (
-    <main className="min-h-screen bg-background text-foreground">
-      <div className="mx-auto grid min-h-screen w-full max-w-7xl grid-cols-1 gap-14 px-6 py-16 md:grid-cols-[minmax(0,0.95fr)_minmax(360px,1.05fr)] md:items-center md:px-10 lg:gap-20 lg:px-14">
+    <main className="relative min-h-screen bg-background text-foreground">
+      <SmokeAscii className="fixed inset-0 z-0 text-neutral-500 opacity-25 [mask-image:linear-gradient(to_bottom,transparent_0%,black_55%)] dark:text-neutral-400 dark:opacity-30 md:left-auto md:w-[54vw] md:text-neutral-700 md:opacity-100 md:[mask-image:linear-gradient(to_right,transparent_0%,black_35%)] md:dark:text-neutral-300 md:dark:opacity-100" />
+      <div className="relative z-10 mx-auto grid min-h-screen w-full max-w-7xl grid-cols-1 gap-14 px-6 py-16 md:grid-cols-[minmax(0,0.95fr)_minmax(360px,1.05fr)] md:items-center md:px-10 lg:gap-20 lg:px-14">
         <div className="grid h-[calc(100svh-8rem)] min-h-0 max-w-2xl grid-rows-[auto_minmax(0,1fr)_auto] overflow-hidden">
           <header>
             <div className="flex items-start justify-between">
@@ -263,9 +264,7 @@ export default async function Home() {
           </nav>
         </div>
 
-        <aside className="flex min-h-[42vh] items-center justify-center md:min-h-[calc(100vh-8rem)] md:justify-end">
-          <SpaceAscii />
-        </aside>
+        <aside aria-hidden="true" className="hidden md:block" />
       </div>
     </main>
   );
