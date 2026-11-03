@@ -23,7 +23,7 @@ function stamp(iso: string, now: number) {
 
 function XLogo() {
   return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className="size-[18px] fill-current">
+    <svg viewBox="0 0 24 24" aria-hidden="true" className="size-[14px] fill-current">
       <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
     </svg>
   );
@@ -31,15 +31,16 @@ function XLogo() {
 
 function Stat({ icon: Icon, value }: { icon: typeof Heart; value?: number }) {
   return (
-    <span className="inline-flex items-center gap-1">
-      <Icon aria-hidden="true" className="size-[16px]" strokeWidth={1.75} />
+    <span className="inline-flex h-6 items-center gap-1.5">
+      <Icon aria-hidden="true" className="size-[15px]" strokeWidth={1.75} />
       {value != null && value > 0 && <span className="text-[13px] tabular-nums">{compact(value)}</span>}
     </span>
   );
 }
 
-// Looks like a post on X (system sans, X's colours and spacing), sitting in
-// the page's content column under an "On X" label.
+// A post on X, set into the page: Geist sans, the site's two text tones, and
+// 24px lines. The -my-3 hangs the border in the half-lines above and below, so
+// the author line sits level with the "On X" label and the rhythm continues.
 export function XPost({ post, now }: { post: Post | null; now: number }) {
   if (!post) return null;
 
@@ -50,33 +51,33 @@ export function XPost({ post, now }: { post: Post | null; now: number }) {
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`Post by ${post.author.name} on X`}
-        className="tweet block rounded-2xl border border-[#cfd9de] bg-white px-4 pb-3 pt-3 !no-underline transition-colors hover:bg-[#f7f9f9] dark:border-[#2f3336] dark:bg-black dark:hover:bg-[#080808]"
+        className="tweet -my-3 block rounded-xl border border-ink/12 bg-background px-[15px] py-[11px] !no-underline transition-colors hover:border-ink/25"
       >
         <div className="flex gap-3">
           {post.author.avatar && (
             <img
               src={post.author.avatar}
               alt=""
-              width={40}
-              height={40}
-              className="size-10 shrink-0 rounded-full"
+              width={36}
+              height={36}
+              className="mt-[2px] size-9 shrink-0 rounded-full"
             />
           )}
 
           <div className="min-w-0 flex-1">
             <div className="flex items-start justify-between gap-2">
-              <div className="flex min-w-0 items-baseline gap-1 text-[15px] leading-5">
-                <span className="truncate font-bold text-[#0f1419] dark:text-[#e7e9ea]">{post.author.name}</span>
-                <span className="truncate text-[#536471] dark:text-[#71767b]">
+              <div className="flex min-w-0 items-baseline gap-1">
+                <span className="truncate font-semibold text-ink">{post.author.name}</span>
+                <span className="truncate text-dim">
                   @{post.author.username} · {stamp(post.date, now)}
                 </span>
               </div>
-              <span className="text-[#0f1419] dark:text-[#e7e9ea]">
+              <span className="flex h-6 items-center text-dim">
                 <XLogo />
               </span>
             </div>
 
-            <p className="mt-0.5 line-clamp-4 whitespace-pre-line text-[15px] leading-5 text-[#0f1419] dark:text-[#e7e9ea]">
+            <p className="line-clamp-4 whitespace-pre-line text-ink/85">
               {post.text}
             </p>
 
@@ -84,11 +85,11 @@ export function XPost({ post, now }: { post: Post | null; now: number }) {
               <img
                 src={`${post.photo}?name=small`}
                 alt=""
-                className="mt-3 max-h-56 w-full rounded-2xl border border-[#cfd9de] object-cover dark:border-[#2f3336]"
+                className="my-3 h-[168px] w-full rounded-lg border border-ink/12 object-cover"
               />
             )}
 
-            <div className="mt-3 flex max-w-[425px] justify-between text-[#536471] dark:text-[#71767b]">
+            <div className="flex max-w-[400px] justify-between text-dim">
               <Stat icon={MessageCircle} value={post.replies} />
               <Stat icon={Repeat2} value={post.reposts} />
               <Stat icon={Heart} value={post.likes} />

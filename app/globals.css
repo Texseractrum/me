@@ -181,9 +181,10 @@ body {
   border-radius: 1px;
 }
 
-/* The X post card uses X's own type, not the page's mono grid. */
+/* The X post keeps a tweet's shape but uses the site's sans sibling (Geist),
+   its two text tones, and the same 24px line so the page rhythm continues. */
 .type-grid .tweet {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  line-height: 20px;
-  -webkit-font-smoothing: antialiased;
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 15px;
+  line-height: 24px;
 }
