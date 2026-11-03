@@ -1,4 +1,4 @@
-import type { Vitals as VitalsData } from "@/lib/vitals";
+import type { Vitals as VitalsData } from "@/lib/health";
 import { Row } from "@/components/row";
 import { Heartbeat } from "@/components/heartbeat";
 

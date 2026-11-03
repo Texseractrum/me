@@ -1,19 +1,19 @@
-import { getSql } from "@/lib/location";
-
 const PUBLICATION = "https://substack.aidaniil.com";
+// Public: titles, dates, likes. Author-only (needs the session cookie): views.
 const ARCHIVE_URL = `${PUBLICATION}/api/v1/archive?sort=new&limit=12`;
+const STATS_URL = `${PUBLICATION}/api/v1/post_management/published?offset=0&limit=25&order_by=post_date&order_direction=desc`;
+const SESSION = process.env.SUBSTACK_SESSION; // connect.sid for the custom domain
 const TTL_MS = 15 * 60 * 1000;
 
 export interface Post {
   id: number;
   title: string;
   url: string;
-  date: string; // ISO
+  date: string;
   subtitle?: string;
   likes: number;
   comments: number;
   restacks: number;
-  /** Author-only stat, synced daily into our DB (see /api/substack/stats). */
   views?: number;
 }
 
@@ -24,7 +24,6 @@ interface ArchivePost {
   canonical_url?: string;
   post_date?: string;
   audience?: string;
-  type?: string;
   reaction_count?: number;
   comment_count?: number;
   restacks?: number;
@@ -32,14 +31,37 @@ interface ArchivePost {
 
 let cache: { posts: Post[]; at: number } | null = null;
 
+async function getViews(): Promise<Map<number, number>> {
+  if (!SESSION) return new Map();
+  try {
+    const res = await fetch(STATS_URL, {
+      headers: { Cookie: `connect.sid=${SESSION}`, "User-Agent": "aidaniil.com" },
+      cache: "no-store",
+      signal: AbortSignal.timeout(5000),
+    });
+    if (!res.ok) return new Map();
+    const data: { posts?: { id: number; stats?: { views?: number } }[] } = await res.json();
+    return new Map(
+      (data.posts ?? [])
+        .filter((p) => typeof p.stats?.views === "number")
+        .map((p) => [p.id, p.stats!.views!]),
+    );
+  } catch {
+    return new Map();
+  }
+}
+
 export async function getPosts(limit = 4): Promise<Post[]> {
   if (cache && Date.now() - cache.at < TTL_MS) return cache.posts.slice(0, limit);
 
   try {
-    const res = await fetch(ARCHIVE_URL, {
-      headers: { "User-Agent": "aidaniil.com", Accept: "application/json" },
-      next: { revalidate: 900 },
-    });
+    const [res, views] = await Promise.all([
+      fetch(ARCHIVE_URL, {
+        headers: { "User-Agent": "aidaniil.com", Accept: "application/json" },
+        next: { revalidate: 900 },
+      }),
+      getViews(),
+    ]);
     if (!res.ok) throw new Error(`substack ${res.status}`);
     const data: ArchivePost[] = await res.json();
 
@@ -55,51 +77,14 @@ export async function getPosts(limit = 4): Promise<Post[]> {
           likes: p.reaction_count ?? 0,
           comments: p.comment_count ?? 0,
           restacks: p.restacks ?? 0,
+          views: views.get(p.id!),
         }),
       )
       .sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
-
-    const views = await getViews();
-    for (const post of posts) post.views = views.get(post.id);
 
     cache = { posts, at: Date.now() };
     return posts.slice(0, limit);
   } catch {
     return cache?.posts.slice(0, limit) ?? [];
   }
-}
-
-export async function ensureStatsTable() {
-  await getSql()`
-    CREATE TABLE IF NOT EXISTS substack_post_stats (
-      post_id bigint PRIMARY KEY,
-      views integer NOT NULL,
-      updated_at timestamptz NOT NULL DEFAULT now()
-    )
-  `;
-}
-
-async function getViews(): Promise<Map<number, number>> {
-  try {
-    await ensureStatsTable();
-    const rows = await getSql()<{ post_id: string; views: number }[]>`
-      SELECT post_id, views FROM substack_post_stats
-    `;
-    return new Map(rows.map((r) => [Number(r.post_id), r.views]));
-  } catch {
-    return new Map();
-  }
-}
-
-export async function saveViews(stats: { id: number; views: number }[]) {
-  await ensureStatsTable();
-  const sql = getSql();
-  for (const { id, views } of stats) {
-    await sql`
-      INSERT INTO substack_post_stats (post_id, views, updated_at)
-      VALUES (${id}, ${views}, now())
-      ON CONFLICT (post_id) DO UPDATE SET views = EXCLUDED.views, updated_at = now()
-    `;
-  }
-  cache = null;
 }

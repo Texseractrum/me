@@ -9,7 +9,7 @@ import { Row } from "@/components/row";
 import { LocalTime } from "@/components/local-time";
 import { requestTime, timezoneFor } from "@/lib/timezones";
 import { getPosts } from "@/lib/substack";
-import { getVitals } from "@/lib/vitals";
+import { getVitals } from "@/lib/health";
 import { Vitals } from "@/components/vitals";
 
 const roles: Role[] = [
@@ -34,14 +34,14 @@ const roles: Role[] = [
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
-  const [location, spotify, posts, vitals] = await Promise.all([
-    getLocation(),
+  const location = await getLocation();
+  const timeZone = timezoneFor(location.city);
+  const [spotify, posts, vitals] = await Promise.all([
     getNowPlaying(),
     getPosts(3),
-    getVitals(),
+    getVitals(timeZone),
   ]);
   const now = requestTime();
-  const timeZone = timezoneFor(location.city);
 
   const links = [
     { label: "GitHub", href: "https://github.com/Texseractrum" },
