@@ -180,3 +180,10 @@ body {
   outline-offset: 3px;
   border-radius: 1px;
 }
+
+/* The X post card uses X's own type, not the page's mono grid. */
+.type-grid .tweet {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 20px;
+  -webkit-font-smoothing: antialiased;
+}

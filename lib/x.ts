@@ -10,6 +10,8 @@ export interface Post {
   date: string;
   views?: number;
   likes: number;
+  replies: number;
+  reposts: number;
   photo?: string;
   author: { name: string; username: string; avatar?: string };
 }
@@ -20,7 +22,13 @@ interface ApiTweet {
   created_at: string;
   note_tweet?: { text: string };
   attachments?: { media_keys?: string[] };
-  public_metrics?: { like_count: number; impression_count?: number };
+  public_metrics?: {
+    like_count: number;
+    reply_count: number;
+    retweet_count: number;
+    quote_count: number;
+    impression_count?: number;
+  };
 }
 
 function clean(text: string) {
@@ -71,6 +79,8 @@ export async function getLatestPost(): Promise<Post | null> {
       date: t.created_at,
       views: t.public_metrics?.impression_count,
       likes: t.public_metrics?.like_count ?? 0,
+      replies: t.public_metrics?.reply_count ?? 0,
+      reposts: (t.public_metrics?.retweet_count ?? 0) + (t.public_metrics?.quote_count ?? 0),
       photo: media?.url ?? media?.preview_image_url,
       author: {
         name: user?.name ?? "Dan",
