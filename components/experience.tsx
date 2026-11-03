@@ -11,8 +11,8 @@ export interface Role {
 
 // Row height drives the rail: it runs from the first dot's center to the
 // last dot's center, so it never pokes out past either end.
-const ROW = "h-11";
-const HALF_ROW = "1.375rem";
+const ROW = "h-10";
+const HALF_ROW = "1.25rem";
 
 export function Experience({ roles }: { roles: Role[] }) {
   return (

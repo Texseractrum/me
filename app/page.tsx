@@ -6,6 +6,10 @@ import { AngelInvestments } from "@/components/angel-investments";
 import { Experience, type Role } from "@/components/experience";
 import { getNowPlaying } from "@/lib/spotify";
 import { NowPlaying } from "@/components/now-playing";
+import { Writing } from "@/components/writing";
+import { LocalTime } from "@/components/local-time";
+import { requestTime, timezoneFor } from "@/lib/timezones";
+import { getPosts } from "@/lib/substack";
 
 const roles: Role[] = [
   {
@@ -58,10 +62,13 @@ const angelInvestments = [
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
-  const [location, spotify] = await Promise.all([
+  const [location, spotify, posts] = await Promise.all([
     getLocation(),
     getNowPlaying(),
+    getPosts(3),
   ]);
+  const now = requestTime();
+  const timeZone = timezoneFor(location.city);
 
   return (
     <main className="relative min-h-screen bg-background text-foreground">
@@ -91,26 +98,31 @@ export default async function Home() {
             </p>
           </header>
 
-          <div className="flex min-h-0 flex-col gap-12 overflow-y-auto py-10 pr-1 sm:gap-16 sm:py-16 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div className="flex min-h-0 flex-col gap-10 overflow-y-auto py-10 pr-1 sm:gap-11 sm:py-12 [mask-image:linear-gradient(to_bottom,transparent,black_2.5rem,black_calc(100%-2.5rem),transparent)] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             <Experience roles={roles} />
+
+            <Writing posts={posts} now={now} />
 
             <AngelInvestments investments={angelInvestments} />
 
             <section>
               <div className="flex items-baseline gap-4">
-                <span className="w-36 shrink-0 font-mono text-sm uppercase tracking-widest text-neutral-400">
+                <span className="w-28 sm:w-44 shrink-0 font-mono text-sm uppercase tracking-widest text-neutral-400">
                   Location
                 </span>
-                <span className="font-mono text-base text-neutral-600 dark:text-neutral-400">
-                  {location.city ?? "—"}
-                  {location.country && (
-                    <span className="text-neutral-400">, {location.country}</span>
-                  )}
+                <span className="flex min-w-0 items-baseline gap-3 font-mono">
+                  <span className="min-w-0 truncate text-base text-neutral-600 dark:text-neutral-400">
+                    {location.city ?? "—"}
+                    {location.country && (
+                      <span className="text-neutral-400">, {location.country}</span>
+                    )}
+                  </span>
+                  {timeZone && <LocalTime timeZone={timeZone} initial={now} />}
                 </span>
               </div>
 
               <div className="mt-5 flex items-baseline gap-4">
-                <span className="w-36 shrink-0 font-mono text-sm uppercase tracking-widest text-neutral-400">
+                <span className="w-28 sm:w-44 shrink-0 font-mono text-sm uppercase tracking-widest text-neutral-400">
                   Track
                 </span>
                 <NowPlaying initial={spotify} />

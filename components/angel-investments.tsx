@@ -25,7 +25,7 @@ export function AngelInvestments({ investments }: AngelInvestmentsProps) {
         className="group flex w-full cursor-pointer items-baseline gap-4 text-left"
         onClick={() => setIsOpen((open) => !open)}
       >
-        <span className="w-36 shrink-0 font-mono text-sm uppercase tracking-widest text-neutral-400 transition-colors duration-300 group-aria-expanded:text-neutral-500 dark:group-aria-expanded:text-neutral-300">
+        <span className="w-44 shrink-0 font-mono text-sm uppercase tracking-widest text-neutral-400 transition-colors duration-300 group-aria-expanded:text-neutral-500 dark:group-aria-expanded:text-neutral-300">
           Angel investments
         </span>
         <span className="font-mono text-sm text-neutral-400 transition-colors duration-300">
@@ -41,7 +41,7 @@ export function AngelInvestments({ investments }: AngelInvestmentsProps) {
         }`}
       >
         <div className="overflow-hidden">
-          <div className="mt-5 max-h-44 overflow-y-auto overscroll-contain sm:ml-40 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div className="mt-5 max-h-44 overflow-y-auto overscroll-contain sm:ml-48 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             <div className="flex min-w-0 flex-col gap-3">
               {investments.map((investment) => (
                 <a
