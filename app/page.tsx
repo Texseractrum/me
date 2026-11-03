@@ -4,6 +4,7 @@ import { SparkleLink } from "@/components/sparkle-link";
 import { SmokeAscii } from "@/components/smoke-ascii";
 import { AngelInvestments } from "@/components/angel-investments";
 import { getNowPlaying } from "@/lib/spotify";
+import { NowPlaying } from "@/components/now-playing";
 
 const angelInvestments = [
   {
@@ -189,23 +190,7 @@ export default async function Home() {
                 <span className="w-36 shrink-0 font-mono text-sm uppercase tracking-widest text-neutral-400">
                   Track
                 </span>
-                {spotify.title ? (
-                  <a
-                    href={spotify.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="min-w-0 truncate font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
-                  >
-                    {spotify.title}
-                    {spotify.artist && (
-                      <span className="text-neutral-400"> · {spotify.artist}</span>
-                    )}
-                  </a>
-                ) : (
-                  <span className="font-mono text-base text-neutral-600 dark:text-neutral-400">
-                    —
-                  </span>
-                )}
+                <NowPlaying initial={spotify} />
               </div>
             </section>
           </div>
