@@ -9,6 +9,8 @@ import { Row } from "@/components/row";
 import { LocalTime } from "@/components/local-time";
 import { requestTime, timezoneFor } from "@/lib/timezones";
 import { getPosts } from "@/lib/substack";
+import { getVitals } from "@/lib/vitals";
+import { Vitals } from "@/components/vitals";
 
 const roles: Role[] = [
   {
@@ -32,10 +34,11 @@ const roles: Role[] = [
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
-  const [location, spotify, posts] = await Promise.all([
+  const [location, spotify, posts, vitals] = await Promise.all([
     getLocation(),
     getNowPlaying(),
     getPosts(3),
+    getVitals(),
   ]);
   const now = requestTime();
   const timeZone = timezoneFor(location.city);
@@ -89,6 +92,7 @@ export default async function Home() {
                 </span>
               </Row>
               <NowPlaying initial={spotify} />
+              <Vitals vitals={vitals} now={now} timeZone={timeZone} />
             </div>
           </div>
 
