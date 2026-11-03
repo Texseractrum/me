@@ -107,7 +107,7 @@ export default async function Home() {
 
             <section>
               <div className="flex items-baseline gap-4">
-                <span className="w-28 sm:w-44 shrink-0 font-mono text-sm uppercase tracking-widest text-neutral-400">
+                <span className="w-28 sm:w-32 shrink-0 font-mono text-sm uppercase tracking-widest text-neutral-400">
                   Location
                 </span>
                 <span className="flex min-w-0 items-baseline gap-3 font-mono">
@@ -122,7 +122,7 @@ export default async function Home() {
               </div>
 
               <div className="mt-5 flex items-baseline gap-4">
-                <span className="w-28 sm:w-44 shrink-0 font-mono text-sm uppercase tracking-widest text-neutral-400">
+                <span className="w-28 sm:w-32 shrink-0 font-mono text-sm uppercase tracking-widest text-neutral-400">
                   Track
                 </span>
                 <NowPlaying initial={spotify} />
