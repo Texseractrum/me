@@ -3,9 +3,10 @@
 import { useCallback, useEffect, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import type { SpotifyData } from "@/lib/spotify";
+import { Row } from "@/components/row";
 
 const POLL_MS = 20_000;
-const BAR_HEIGHT = 11;
+const BAR_HEIGHT = 10;
 const REST_SCALE = 2 / BAR_HEIGHT;
 
 // Each bar gets its own rhythm so the motion never visibly loops in sync.
@@ -37,10 +38,8 @@ function Equalizer({ live }: { live: boolean }) {
   return (
     <span
       aria-hidden="true"
-      className={`inline-flex shrink-0 items-end gap-[2px] transition-[color,filter] duration-700 ${
-        live
-          ? "text-[#1db954] dark:text-[#1ed760] dark:drop-shadow-[0_0_4px_rgba(30,215,96,0.45)]"
-          : "text-neutral-300 dark:text-neutral-600"
+      className={`inline-flex shrink-0 items-end gap-[2px] transition-colors duration-700 ${
+        live ? "text-live" : "text-dim/60"
       }`}
       style={{ height: BAR_HEIGHT }}
     >
@@ -121,51 +120,30 @@ export function NowPlaying({ initial }: { initial: SpotifyData }) {
     return () => clearTimeout(t);
   }, [songOver, refresh]);
 
-  if (!data.title) {
-    return (
-      <span className="font-mono text-base text-neutral-600 dark:text-neutral-400">
-        —
-      </span>
-    );
-  }
-
-  const live = data.isPlaying;
+  const live = data.isPlaying && !!data.title;
   const ago = !live && data.playedAt ? timeAgo(data.playedAt, now) : null;
-  const status = live ? "Listening now" : ago ? `Last played ${ago}` : "Last played";
 
   return (
-    <span className="flex min-w-0 items-baseline gap-3" title={status}>
-      <Equalizer live={live} />
-      <span className="sr-only">{status}: </span>
-      <a
-        key={data.url ?? data.title}
-        href={data.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={`group min-w-0 truncate font-mono text-base text-neutral-600 transition-colors hover:text-black dark:text-neutral-400 dark:hover:text-white ${
-          progress != null
-            ? "bg-no-repeat pb-[3px] [--fill:#a3a3a3] [--track:#e5e5e5] hover:[--fill:#000] dark:[--fill:#737373] dark:[--track:#404040] dark:hover:[--fill:#fff]"
-            : "underline decoration-neutral-300 underline-offset-2 hover:decoration-black dark:decoration-neutral-600 dark:hover:decoration-white"
-        }`}
-        style={
-          progress != null
-            ? {
-                // The underline doubles as a progress bar while the song plays.
-                backgroundImage:
-                  "linear-gradient(var(--fill), var(--fill)), linear-gradient(var(--track), var(--track))",
-                backgroundSize: `${(progress * 100).toFixed(2)}% 1px, 100% 1px`,
-                backgroundPosition: "0 100%, 0 100%",
-                transition: "background-size 1s linear, color 150ms",
-              }
-            : undefined
-        }
-      >
-        {data.title}
-        {data.artist && <span className="text-neutral-400"> · {data.artist}</span>}
-      </a>
-      {ago && (
-        <span className="shrink-0 font-mono text-sm text-neutral-400">{ago}</span>
+    <Row
+      label={live ? "Listening" : "Last played"}
+      marker={data.title ? <Equalizer live={live} /> : undefined}
+    >
+      {data.title ? (
+        <div className="grid grid-cols-[minmax(0,1fr)_auto] gap-x-[2ch]">
+          <a
+            href={data.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="truncate text-ink/75 hover:text-ink"
+          >
+            {data.title}
+            {data.artist && <span className="text-dim"> by {data.artist}</span>}
+          </a>
+          {ago && <span className="text-right text-dim">{ago}</span>}
+        </div>
+      ) : (
+        <span className="text-dim">Nothing yet</span>
       )}
-    </span>
+    </Row>
   );
 }

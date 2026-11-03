@@ -9,8 +9,8 @@ export function ThemeToggle() {
   return (
     <button
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="font-mono text-sm text-neutral-400 transition-colors duration-200 hover:text-black dark:hover:text-white"
-      aria-label="Toggle theme"
+      className="cursor-pointer text-dim hover:text-ink"
+      aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
       suppressHydrationWarning
     >
       {isDark ? "Light" : "Dark"}
