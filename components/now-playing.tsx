@@ -124,10 +124,7 @@ export function NowPlaying({ initial }: { initial: SpotifyData }) {
   const ago = !live && data.playedAt ? timeAgo(data.playedAt, now) : null;
 
   return (
-    <Row
-      label={live ? "Listening" : "Last played"}
-      marker={data.title ? <Equalizer live={live} /> : undefined}
-    >
+    <Row label={live ? "Listening" : "Last played"}>
       {data.title ? (
         <div className="grid grid-cols-[minmax(0,1fr)_auto] gap-x-[2ch]">
           <a
@@ -139,7 +136,15 @@ export function NowPlaying({ initial }: { initial: SpotifyData }) {
             {data.title}
             {data.artist && <span className="text-dim"> by {data.artist}</span>}
           </a>
-          {ago && <span className="text-right text-dim">{ago}</span>}
+          {/* Status lives in the right-hand meta column, like every other number on the page. */}
+          {live ? (
+            <span className="inline-flex items-baseline gap-[1ch] text-dim">
+              <Equalizer live />
+              now
+            </span>
+          ) : (
+            ago && <span className="text-right text-dim">{ago}</span>
+          )}
         </div>
       ) : (
         <span className="text-dim">Nothing yet</span>

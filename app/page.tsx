@@ -1,7 +1,6 @@
 import { getLocation } from "@/lib/location";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { SmokeAscii } from "@/components/smoke-ascii";
-import { AngelInvestments } from "@/components/angel-investments";
 import { Experience, type Role } from "@/components/experience";
 import { getNowPlaying } from "@/lib/spotify";
 import { NowPlaying } from "@/components/now-playing";
@@ -28,34 +27,6 @@ const roles: Role[] = [
   { name: "Cursor", href: "https://cursor.com", role: "Ambassador" },
   { name: "Iterate", href: "https://iterate.com", role: "SWE Intern" },
   { name: "UCL", href: "https://ucl.ac.uk", role: "Dropout" },
-];
-
-const angelInvestments = [
-  {
-    name: "Touchmark",
-    batch: "S26",
-    href: "https://touchmark.ai",
-  },
-  {
-    name: "Byteport",
-    batch: "W26",
-    href: "https://byteport.com",
-  },
-  {
-    name: "Forum",
-    batch: "W26",
-    href: "https://forum.market",
-  },
-  {
-    name: "Flick",
-    batch: "F25",
-    href: "https://flick.art",
-  },
-  {
-    name: "Zephyr Fusion",
-    batch: "F25",
-    href: "https://zephyrfusion.com",
-  },
 ];
 
 export const dynamic = "force-dynamic";
@@ -104,10 +75,6 @@ export default async function Home() {
                 <Writing posts={posts} />
               </Row>
             )}
-
-            <Row label="Investments">
-              <AngelInvestments investments={angelInvestments} />
-            </Row>
 
             <div>
               <Row label="Location">
