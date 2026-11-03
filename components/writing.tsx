@@ -1,7 +1,13 @@
-import { Heart, MessageCircle } from "lucide-react";
+import { Eye, Heart, MessageCircle } from "lucide-react";
 import type { Post } from "@/lib/substack";
 
 const NEW_FOR_DAYS = 21;
+
+function compact(n: number) {
+  if (n < 1000) return String(n);
+  const k = n / 1000;
+  return `${k < 10 ? k.toFixed(1).replace(/\.0$/, "") : Math.round(k)}k`;
+}
 
 function formatDate(iso: string) {
   const d = new Date(iso);
@@ -55,6 +61,16 @@ export function Writing({ posts, now }: { posts: Post[]; now: number }) {
                 className="min-w-4 flex-1 -translate-y-[0.3em] border-b border-dotted border-neutral-300 transition-colors duration-200 group-hover:border-neutral-400 dark:border-neutral-700 dark:group-hover:border-neutral-500"
               />
               <span className="flex shrink-0 items-baseline gap-3 text-sm tabular-nums text-neutral-400 dark:text-neutral-500">
+                {post.views != null && (
+                  <span
+                    className="inline-flex items-center gap-1"
+                    aria-label={`${post.views.toLocaleString("en-US")} views`}
+                    title={`${post.views.toLocaleString("en-US")} views`}
+                  >
+                    <Eye aria-hidden="true" className="size-3 translate-y-px" strokeWidth={2} />
+                    {compact(post.views)}
+                  </span>
+                )}
                 <span
                   className="inline-flex items-center gap-1"
                   aria-label={`${post.likes} likes`}

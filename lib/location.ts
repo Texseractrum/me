@@ -56,7 +56,7 @@ async function supabaseRequest(path: string, init?: RequestInit) {
   return response.json();
 }
 
-function getSql() {
+export function getSql() {
   if (!process.env.DATABASE_URL) {
     throw new Error("DATABASE_URL is not configured");
   }
