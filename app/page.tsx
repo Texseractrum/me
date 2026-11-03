@@ -11,6 +11,9 @@ import { requestTime, timezoneFor } from "@/lib/timezones";
 import { getPosts } from "@/lib/substack";
 import { getVitals } from "@/lib/health";
 import { Vitals } from "@/components/vitals";
+import { Activity } from "@/components/activity";
+import { getLastCommit } from "@/lib/github";
+import { getLatestPost } from "@/lib/x";
 
 const roles: Role[] = [
   {
@@ -36,10 +39,12 @@ export const dynamic = "force-dynamic";
 export default async function Home() {
   const location = await getLocation();
   const timeZone = timezoneFor(location.city);
-  const [spotify, posts, vitals] = await Promise.all([
+  const [spotify, posts, vitals, tweet, commit] = await Promise.all([
     getNowPlaying(),
     getPosts(3),
     getVitals(timeZone),
+    getLatestPost(),
+    getLastCommit(),
   ]);
   const now = requestTime();
 
@@ -78,6 +83,8 @@ export default async function Home() {
                 <Writing posts={posts} />
               </Row>
             )}
+
+            <Activity post={tweet} commit={commit} now={now} />
 
             <div>
               <Row label="Location">

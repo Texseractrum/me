@@ -16,7 +16,7 @@ export function ThemeToggle() {
     <button
       onClick={() => setTheme(isDark ? "light" : "dark")}
       className="cursor-pointer text-dim hover:text-ink"
-      aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
+      aria-label={!mounted ? "Toggle theme" : isDark ? "Switch to light theme" : "Switch to dark theme"}
     >
       <span className={mounted ? undefined : "invisible"}>
         {mounted && isDark ? "Light" : "Dark"}
