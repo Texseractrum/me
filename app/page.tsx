@@ -3,8 +3,29 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { SparkleLink } from "@/components/sparkle-link";
 import { SmokeAscii } from "@/components/smoke-ascii";
 import { AngelInvestments } from "@/components/angel-investments";
+import { Experience, type Role } from "@/components/experience";
 import { getNowPlaying } from "@/lib/spotify";
 import { NowPlaying } from "@/components/now-playing";
+
+const roles: Role[] = [
+  {
+    name: "Sparkles",
+    href: "https://sparkles.dev",
+    batch: "(YC W26)",
+    role: "CEO",
+    current: true,
+    sparkle: true,
+  },
+  {
+    name: "Structured",
+    href: "https://getstructured.ai",
+    batch: "(YC F25)",
+    role: "SWE",
+  },
+  { name: "Cursor", href: "https://cursor.com", role: "Ambassador" },
+  { name: "Iterate", href: "https://iterate.com", role: "SWE Intern" },
+  { name: "UCL", href: "https://ucl.ac.uk", role: "Dropout" },
+];
 
 const angelInvestments = [
   {
@@ -71,105 +92,7 @@ export default async function Home() {
           </header>
 
           <div className="flex min-h-0 flex-col gap-12 overflow-y-auto py-10 pr-1 sm:gap-16 sm:py-16 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            <section>
-              <div className="relative">
-                <div className="absolute left-1 top-2 h-[calc(100%-16px)] w-px bg-neutral-200 dark:bg-neutral-700" />
-
-                <div className="relative flex items-center gap-4 pb-5">
-                  <div className="relative z-10">
-                    <div className="relative h-2 w-2 rounded-full bg-black dark:bg-white" />
-                  </div>
-                  <div className="flex flex-1 items-baseline">
-                    <SparkleLink
-                      href="https://sparkles.dev"
-                      className="w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
-                    >
-                      Sparkles
-                    </SparkleLink>
-                    <span className="w-20 font-mono text-sm text-neutral-400">
-                      (YC W26)
-                    </span>
-                    <span className="ml-auto font-mono text-sm text-neutral-400">
-                      CEO
-                    </span>
-                  </div>
-                </div>
-
-                <div className="relative flex items-center gap-4 pb-5">
-                  <div className="relative z-10 h-2 w-2 rounded-full bg-neutral-300 dark:bg-neutral-600" />
-                  <div className="flex flex-1 items-baseline">
-                    <a
-                      href="https://getstructured.ai"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
-                    >
-                      Structured
-                    </a>
-                    <span className="w-20 font-mono text-sm text-neutral-400">
-                      (YC F25)
-                    </span>
-                    <span className="ml-auto font-mono text-sm text-neutral-400">
-                      SWE
-                    </span>
-                  </div>
-                </div>
-
-                <div className="relative flex items-center gap-4 pb-5">
-                  <div className="relative z-10 h-2 w-2 rounded-full bg-neutral-300 dark:bg-neutral-600" />
-                  <div className="flex flex-1 items-baseline">
-                    <a
-                      href="https://cursor.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
-                    >
-                      Cursor
-                    </a>
-                    <span className="w-20" />
-                    <span className="ml-auto font-mono text-sm text-neutral-400">
-                      Ambassador
-                    </span>
-                  </div>
-                </div>
-
-                <div className="relative flex items-center gap-4 pb-5">
-                  <div className="relative z-10 h-2 w-2 rounded-full bg-neutral-300 dark:bg-neutral-600" />
-                  <div className="flex flex-1 items-baseline">
-                    <a
-                      href="https://iterate.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
-                    >
-                      Iterate
-                    </a>
-                    <span className="w-20" />
-                    <span className="ml-auto font-mono text-sm text-neutral-400">
-                      SWE Intern
-                    </span>
-                  </div>
-                </div>
-
-                <div className="relative flex items-center gap-4">
-                  <div className="relative z-10 h-2 w-2 rounded-full bg-neutral-300 dark:bg-neutral-600" />
-                  <div className="flex flex-1 items-baseline">
-                    <a
-                      href="https://ucl.ac.uk"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-28 font-mono text-base text-neutral-600 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-black hover:decoration-black dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-white dark:hover:decoration-white"
-                    >
-                      UCL
-                    </a>
-                    <span className="w-20" />
-                    <span className="ml-auto font-mono text-sm text-neutral-400">
-                      Dropout
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </section>
+            <Experience roles={roles} />
 
             <AngelInvestments investments={angelInvestments} />
 
