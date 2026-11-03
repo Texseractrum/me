@@ -26,39 +26,47 @@ export function Vitals({
   timeZone?: string;
 }) {
   if (!vitals) return null;
-  const { heartRate, restingHeartRate, sleep, steps } = vitals;
+  const { heartRate, sleep, steps } = vitals;
   const fresh = heartRate && now - Date.parse(heartRate.measuredAt) < FRESH_MS;
   const sleptRecently = sleep && now - Date.parse(sleep.end) < 20 * 3600_000;
   const stepsToday = steps && dayIn(timeZone, steps.asOf) === dayIn(timeZone, now);
 
+  const parts: React.ReactNode[] = [];
+  if (heartRate) parts.push(<span key="hr">{heartRate.bpm} bpm</span>);
+  if (sleep && sleptRecently)
+    parts.push(
+      <span key="sleep">
+        {Math.floor(sleep.minutesAsleep / 60)}h {sleep.minutesAsleep % 60}m<span className="text-dim"> sleep</span>
+      </span>,
+    );
+  if (steps && stepsToday)
+    parts.push(
+      <span key="steps">
+        {steps.count.toLocaleString("en-US")}
+        <span className="text-dim"> steps</span>
+      </span>,
+    );
+  if (!parts.length) return null;
+
+  // One line: heart rate, last night's sleep, today's steps. Freshness on the right.
   return (
-    <>
-      {heartRate && (
-        <Row label="Heart rate">
-          <div className="grid grid-cols-[minmax(0,1fr)_auto] gap-x-[2ch]">
-            <span>
-              {heartRate.bpm} bpm
-              {restingHeartRate && <span className="text-dim">, resting {restingHeartRate}</span>}
+    <Row label="Vitals">
+      <div className="grid grid-cols-[minmax(0,1fr)_auto] gap-x-[2ch]">
+        <span className="truncate">
+          {parts.map((part, i) => (
+            <span key={i}>
+              {i > 0 && <span className="text-dim">, </span>}
+              {part}
             </span>
-            <span className="inline-flex items-baseline gap-[1ch] text-dim">
-              {fresh && <Heartbeat bpm={heartRate.bpm} />}
-              {ago(heartRate.measuredAt, now)}
-            </span>
-          </div>
-        </Row>
-      )}
-      {sleep && sleptRecently && (
-        <Row label="Sleep">
-          {Math.floor(sleep.minutesAsleep / 60)}h {sleep.minutesAsleep % 60}m
-          <span className="text-dim"> last night</span>
-        </Row>
-      )}
-      {steps && stepsToday && (
-        <Row label="Steps">
-          {steps.count.toLocaleString("en-US")}
-          <span className="text-dim"> today</span>
-        </Row>
-      )}
-    </>
+          ))}
+        </span>
+        {heartRate && (
+          <span className="inline-flex items-baseline gap-[1ch] text-dim">
+            {fresh && <Heartbeat bpm={heartRate.bpm} />}
+            {ago(heartRate.measuredAt, now)}
+          </span>
+        )}
+      </div>
+    </Row>
   );
 }

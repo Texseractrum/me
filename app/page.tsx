@@ -11,8 +11,7 @@ import { requestTime, timezoneFor } from "@/lib/timezones";
 import { getPosts } from "@/lib/substack";
 import { getVitals } from "@/lib/health";
 import { Vitals } from "@/components/vitals";
-import { Activity } from "@/components/activity";
-import { getLastCommit } from "@/lib/github";
+import { XPost } from "@/components/x-post";
 import { getLatestPost } from "@/lib/x";
 
 const roles: Role[] = [
@@ -39,12 +38,11 @@ export const dynamic = "force-dynamic";
 export default async function Home() {
   const location = await getLocation();
   const timeZone = timezoneFor(location.city);
-  const [spotify, posts, vitals, tweet, commit] = await Promise.all([
+  const [spotify, posts, vitals, tweet] = await Promise.all([
     getNowPlaying(),
     getPosts(3),
     getVitals(timeZone),
     getLatestPost(),
-    getLastCommit(),
   ]);
   const now = requestTime();
 
@@ -61,7 +59,7 @@ export default async function Home() {
       <SmokeAscii className="fixed inset-0 z-0 text-neutral-500 opacity-25 [mask-image:linear-gradient(to_bottom,transparent_0%,black_55%)] dark:text-neutral-400 dark:opacity-30 md:left-auto md:w-[54vw] md:text-neutral-700 md:opacity-100 md:[mask-image:linear-gradient(to_right,transparent_0%,black_35%)] md:dark:text-neutral-300 md:dark:opacity-100" />
       <div className="relative z-10 mx-auto grid min-h-screen w-full max-w-7xl grid-cols-1 px-6 py-12 md:grid-cols-[minmax(0,1fr)_minmax(320px,1fr)] md:items-center md:px-12 lg:px-16">
         {/* Everything below sits on a 64ch measure and a 24px line. */}
-        <div className="type-grid flex w-full max-w-[64ch] flex-col gap-y-[72px] font-mono">
+        <div className="type-grid flex w-full max-w-[64ch] flex-col gap-y-12 font-mono">
           <header>
             <div className="flex justify-between">
               <h1 className="font-medium">Dan Bekirov</h1>
@@ -84,7 +82,7 @@ export default async function Home() {
               </Row>
             )}
 
-            <Activity post={tweet} commit={commit} now={now} />
+            <XPost post={tweet} now={now} />
 
             <div>
               <Row label="Location">
