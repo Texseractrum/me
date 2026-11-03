@@ -49,7 +49,8 @@ function Equalizer({ live }: { live: boolean }) {
           key={i}
           className="block w-[2px] rounded-full bg-current"
           style={{ height: BAR_HEIGHT, originY: 1 }}
-          initial={false}
+          // Start from rest so live bars visibly rise into their bounce on load.
+          initial={{ scaleY: REST_SCALE }}
           animate={
             live
               ? { scaleY: reduceMotion ? bar.still : bar.frames }
