@@ -1,8 +1,5 @@
 import type { Vitals as VitalsData } from "@/lib/health";
 import { Row } from "@/components/row";
-import { Heartbeat } from "@/components/heartbeat";
-
-const FRESH_MS = 20 * 60 * 1000;
 
 function ago(iso: string, now: number) {
   const m = Math.max(0, Math.floor((now - Date.parse(iso)) / 60_000));
@@ -27,7 +24,6 @@ export function Vitals({
 }) {
   if (!vitals) return null;
   const { heartRate, sleep, steps } = vitals;
-  const fresh = heartRate && now - Date.parse(heartRate.measuredAt) < FRESH_MS;
   const sleptRecently = sleep && now - Date.parse(sleep.end) < 20 * 3600_000;
   const stepsToday = steps && dayIn(timeZone, steps.asOf) === dayIn(timeZone, now);
 
@@ -61,10 +57,7 @@ export function Vitals({
           ))}
         </span>
         {heartRate && (
-          <span className="inline-flex items-baseline gap-[1ch] text-dim">
-            {fresh && <Heartbeat bpm={heartRate.bpm} />}
-            {ago(heartRate.measuredAt, now)}
-          </span>
+          <span className="text-right text-dim">{ago(heartRate.measuredAt, now)}</span>
         )}
       </div>
     </Row>
