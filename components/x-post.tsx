@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { BarChart2, Heart, MessageCircle, Repeat2 } from "lucide-react";
-import type { Post } from "@/lib/x";
+import type { Media, Post } from "@/lib/x";
 import { Row } from "@/components/row";
 
 function compact(n: number) {
@@ -38,11 +38,77 @@ function Stat({ icon: Icon, value }: { icon: typeof Heart; value?: number }) {
   );
 }
 
+// X serves each image at a few fixed widths; let the browser pick a sharp one.
+function srcSet(src: string) {
+  return `${src}?name=small 680w, ${src}?name=medium 1200w, ${src}?name=large 2048w`;
+}
+
+function Tile({ m, sizes, className = "", style }: { m: Media; sizes: string; className?: string; style?: React.CSSProperties }) {
+  return (
+    <div className={`relative overflow-hidden bg-ink/5 ${className}`} style={style}>
+      <img
+        src={`${m.src}?name=medium`}
+        srcSet={srcSet(m.src)}
+        sizes={sizes}
+        alt={m.alt ?? ""}
+        width={m.width}
+        height={m.height}
+        loading="lazy"
+        decoding="async"
+        className="absolute inset-0 size-full object-cover"
+      />
+      {m.kind === "video" && (
+        <span className="absolute left-1/2 top-1/2 flex size-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-black/60 text-white ring-2 ring-white/80">
+          <svg viewBox="0 0 24 24" aria-hidden="true" className="ml-0.5 size-5 fill-current">
+            <path d="M8 5.14v13.72a1 1 0 0 0 1.52.85l10.6-6.86a1 1 0 0 0 0-1.7L9.52 4.3A1 1 0 0 0 8 5.14z" />
+          </svg>
+        </span>
+      )}
+      {m.kind === "animated_gif" && (
+        <span className="absolute bottom-2 left-2 rounded bg-black/70 px-1 text-[11px] font-semibold leading-4 text-white">
+          GIF
+        </span>
+      )}
+    </div>
+  );
+}
+
+// Laid out the way X does it: one item at its own shape (very tall ones
+// cropped), two side by side, three as one tall plus two stacked, four as 2x2.
+function PostMedia({ media }: { media: Media[] }) {
+  if (!media.length) return null;
+  const frame = "my-3 overflow-hidden rounded-lg border border-ink/12";
+  const full = "(min-width: 768px) 480px, calc(100vw - 110px)";
+  const half = "(min-width: 768px) 240px, calc(50vw - 55px)";
+
+  if (media.length === 1) {
+    const m = media[0];
+    const ratio = m.width && m.height ? Math.min(5, Math.max(0.8, m.width / m.height)) : 16 / 9;
+    return (
+      <div className={frame}>
+        <Tile m={m} sizes={full} className="w-full" style={{ aspectRatio: ratio }} />
+      </div>
+    );
+  }
+
+  return (
+    <div className={`${frame} grid aspect-video grid-cols-2 grid-rows-2 gap-[2px]`}>
+      {media.map((m, i) => (
+        <Tile
+          key={m.src}
+          m={m}
+          sizes={half}
+          className={media.length === 2 || (media.length === 3 && i === 0) ? "row-span-2" : ""}
+        />
+      ))}
+    </div>
+  );
+}
+
 // A post on X, set into the page: Geist sans, the site's two text tones, and
 // 24px lines. On wide screens the -my-3 hangs the border in the half-lines above
 // and below, so the author line sits level with the "On X" label. On phones the
-// label stacks above, so the card drops below it instead of overlapping. The
-// photo keeps its own aspect ratio (capped) rather than being cropped to a strip.
+// label stacks above, so the card drops below it instead of overlapping.
 export function XPost({ post, now }: { post: Post | null; now: number }) {
   if (!post) return null;
 
@@ -83,13 +149,7 @@ export function XPost({ post, now }: { post: Post | null; now: number }) {
               {post.text}
             </p>
 
-            {post.photo && (
-              <img
-                src={`${post.photo}?name=small`}
-                alt=""
-                className="my-3 h-auto max-h-[336px] w-full rounded-lg border border-ink/12 object-cover"
-              />
-            )}
+            <PostMedia media={post.media} />
 
             <div className="flex max-w-[400px] justify-between text-dim">
               <Stat icon={MessageCircle} value={post.replies} />

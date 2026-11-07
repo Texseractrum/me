@@ -3,6 +3,15 @@
 const BEARER = process.env.X_BEARER_TOKEN;
 const USER_ID = "1934608034979889152"; // @aidaniil
 
+export interface Media {
+  /** pbs.twimg.com URL without size params; append ?name=small|medium|large. */
+  src: string;
+  width?: number;
+  height?: number;
+  alt?: string;
+  kind: "photo" | "video" | "animated_gif";
+}
+
 export interface Post {
   id: string;
   text: string;
@@ -12,7 +21,7 @@ export interface Post {
   likes: number;
   replies: number;
   reposts: number;
-  photo?: string;
+  media: Media[];
   author: { name: string; username: string; avatar?: string };
 }
 
@@ -50,7 +59,7 @@ export async function getLatestPost(): Promise<Post | null> {
       exclude: "replies,retweets",
       "tweet.fields": "created_at,public_metrics,attachments,note_tweet",
       expansions: "author_id,attachments.media_keys",
-      "media.fields": "type,url,preview_image_url",
+      "media.fields": "type,url,preview_image_url,width,height,alt_text",
       "user.fields": "name,username,profile_image_url",
     });
     const res = await fetch(`https://api.x.com/2/users/${USER_ID}/tweets?${params}`, {
@@ -63,14 +72,39 @@ export async function getLatestPost(): Promise<Post | null> {
       data?: ApiTweet[];
       includes?: {
         users?: { name: string; username: string; profile_image_url?: string }[];
-        media?: { media_key: string; type: string; url?: string; preview_image_url?: string }[];
+        media?: {
+          media_key: string;
+          type: string;
+          url?: string;
+          preview_image_url?: string;
+          width?: number;
+          height?: number;
+          alt_text?: string;
+        }[];
       };
     } = await res.json();
 
     const t = json.data?.[0];
     if (!t) return null;
     const user = json.includes?.users?.[0];
-    const media = json.includes?.media?.find((m) => t.attachments?.media_keys?.includes(m.media_key));
+    // Keep the post's own order (up to X's four), dropping anything without an image.
+    const byKey = new Map((json.includes?.media ?? []).map((m) => [m.media_key, m]));
+    const media: Media[] = (t.attachments?.media_keys ?? [])
+      .map((k) => byKey.get(k))
+      .flatMap((m) => {
+        const src = m && (m.url ?? m.preview_image_url);
+        if (!m || !src) return [];
+        return [
+          {
+            src: src.split("?")[0],
+            width: m.width,
+            height: m.height,
+            alt: m.alt_text,
+            kind: m.type === "video" || m.type === "animated_gif" ? m.type : "photo",
+          } satisfies Media,
+        ];
+      })
+      .slice(0, 4);
 
     return {
       id: t.id,
@@ -81,7 +115,7 @@ export async function getLatestPost(): Promise<Post | null> {
       likes: t.public_metrics?.like_count ?? 0,
       replies: t.public_metrics?.reply_count ?? 0,
       reposts: (t.public_metrics?.retweet_count ?? 0) + (t.public_metrics?.quote_count ?? 0),
-      photo: media?.url ?? media?.preview_image_url,
+      media,
       author: {
         name: user?.name ?? "Dan",
         username: user?.username ?? "aidaniil",
