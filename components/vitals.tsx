@@ -48,7 +48,7 @@ export function Vitals({
   return (
     <Row label="Vitals">
       <div className="grid grid-cols-[minmax(0,1fr)_auto] gap-x-[2ch]">
-        <span className="truncate">
+        <span className="sm:truncate">
           {parts.map((part, i) => (
             <span key={i}>
               {i > 0 && <span className="text-dim">, </span>}

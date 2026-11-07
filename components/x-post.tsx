@@ -39,8 +39,10 @@ function Stat({ icon: Icon, value }: { icon: typeof Heart; value?: number }) {
 }
 
 // A post on X, set into the page: Geist sans, the site's two text tones, and
-// 24px lines. The -my-3 hangs the border in the half-lines above and below, so
-// the author line sits level with the "On X" label and the rhythm continues.
+// 24px lines. On wide screens the -my-3 hangs the border in the half-lines above
+// and below, so the author line sits level with the "On X" label. On phones the
+// label stacks above, so the card drops below it instead of overlapping. The
+// photo keeps its own aspect ratio (capped) rather than being cropped to a strip.
 export function XPost({ post, now }: { post: Post | null; now: number }) {
   if (!post) return null;
 
@@ -51,7 +53,7 @@ export function XPost({ post, now }: { post: Post | null; now: number }) {
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`Post by ${post.author.name} on X`}
-        className="tweet -my-3 block rounded-xl border border-ink/12 bg-background px-[15px] py-[11px] !no-underline transition-colors hover:border-ink/25"
+        className="tweet mt-2 block sm:-mt-3 sm:-mb-3 rounded-xl border border-ink/12 bg-background px-[15px] py-[11px] !no-underline transition-colors hover:border-ink/25"
       >
         <div className="flex gap-3">
           {post.author.avatar && (
@@ -85,7 +87,7 @@ export function XPost({ post, now }: { post: Post | null; now: number }) {
               <img
                 src={`${post.photo}?name=small`}
                 alt=""
-                className="my-3 h-[168px] w-full rounded-lg border border-ink/12 object-cover"
+                className="my-3 h-auto max-h-[336px] w-full rounded-lg border border-ink/12 object-cover"
               />
             )}
 

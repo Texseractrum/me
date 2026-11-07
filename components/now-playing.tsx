@@ -131,7 +131,7 @@ export function NowPlaying({ initial }: { initial: SpotifyData }) {
             href={data.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="truncate text-ink/75 hover:text-ink"
+            className="text-ink/75 hover:text-ink sm:truncate"
           >
             {data.title}
             {data.artist && <span className="text-dim"> by {data.artist}</span>}
