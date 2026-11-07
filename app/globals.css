@@ -189,13 +189,11 @@ body {
   line-height: 24px;
 }
 
-/* Brand marks in running text: one colour (the text's), 12px, in a 2ch cell. */
+/* Brand marks in running text: masks in the dim tone, one gap before the name. */
 .brand-logo {
   display: inline-block;
-  width: 2ch;
-  height: 12px;
-  vertical-align: -1px;
-  background-color: currentColor;
-  -webkit-mask: var(--logo) left center / var(--logo-w, 12px) 12px no-repeat;
-  mask: var(--logo) left center / var(--logo-w, 12px) 12px no-repeat;
+  margin-right: 0.45em;
+  background-color: var(--dim);
+  -webkit-mask: var(--logo) center / contain no-repeat;
+  mask: var(--logo) center / contain no-repeat;
 }

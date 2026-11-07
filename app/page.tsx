@@ -67,8 +67,12 @@ export default async function Home() {
               <ThemeToggle />
             </div>
             <p className="text-dim">
-              CEO of <Brand logo="sparkles">Sparkles</Brand> (YC W26). Backed by{" "}
-              <Brand logo="ycombinator">Y Combinator</Brand> and angels from{" "}
+              CEO of <Brand logo="sparkles" current>
+                Sparkles
+              </Brand> (YC W26).
+            </p>
+            <p className="text-balance text-dim">
+              Backed by <Brand logo="ycombinator">Y Combinator</Brand> and angels from{" "}
               <Brand logo="openai">OpenAI</Brand>, <Brand logo="anthropic">Anthropic</Brand>,{" "}
               <Brand logo="a16z">a16z</Brand>, <Brand logo="general-catalyst">General Catalyst</Brand>{" "}
               and <Brand logo="cloudflare">Cloudflare</Brand>.
