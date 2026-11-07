@@ -12,6 +12,7 @@ import { getPosts } from "@/lib/substack";
 import { getVitals } from "@/lib/health";
 import { Vitals } from "@/components/vitals";
 import { XPost } from "@/components/x-post";
+import { Brand } from "@/components/brand";
 import { getLatestPost } from "@/lib/x";
 
 const roles: Role[] = [
@@ -66,8 +67,11 @@ export default async function Home() {
               <ThemeToggle />
             </div>
             <p className="text-dim">
-              CEO of Sparkles (YC W26). Backed by Y Combinator and angels from
-              OpenAI, Anthropic, a16z, General Catalyst and Cloudflare.
+              CEO of <Brand logo="sparkles">Sparkles</Brand> (YC W26). Backed by{" "}
+              <Brand logo="ycombinator">Y Combinator</Brand> and angels from{" "}
+              <Brand logo="openai">OpenAI</Brand>, <Brand logo="anthropic">Anthropic</Brand>,{" "}
+              <Brand logo="a16z">a16z</Brand>, <Brand logo="general-catalyst">General Catalyst</Brand>{" "}
+              and <Brand logo="cloudflare">Cloudflare</Brand>.
             </p>
           </header>
 

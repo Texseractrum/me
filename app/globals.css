@@ -188,3 +188,14 @@ body {
   font-size: 15px;
   line-height: 24px;
 }
+
+/* Brand marks in running text: one colour (the text's), 12px, in a 2ch cell. */
+.brand-logo {
+  display: inline-block;
+  width: 2ch;
+  height: 12px;
+  vertical-align: -1px;
+  background-color: currentColor;
+  -webkit-mask: var(--logo) left center / var(--logo-w, 12px) 12px no-repeat;
+  mask: var(--logo) left center / var(--logo-w, 12px) 12px no-repeat;
+}
